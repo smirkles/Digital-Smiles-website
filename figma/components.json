@@ -1,0 +1,388 @@
+{
+  "$schema": "https://figma.com/design-components/v1",
+  "$description": "Digital Smiles — Component inventory for Figma. Import tokens.json via Tokens Studio plugin first, then recreate each component below.",
+  "pages": [
+    {
+      "name": "🎨 Design System",
+      "description": "Foundations: color palette, typography scale, spacing, shadows, radii",
+      "frames": [
+        {
+          "name": "Colors",
+          "contents": [
+            { "group": "Background", "swatches": ["bg/cream #FDF6EE", "bg/white #FFFFFF", "bg/dark #1A1A2E", "bg/darkCard #242440"] },
+            { "group": "Text", "swatches": ["text/primary #1A1A2E", "text/muted #6B6B80", "text/light #F0EDE8", "text/darkMuted #9090A8"] },
+            { "group": "Accent", "swatches": [
+              "accent/yellow #FFD23F",
+              "accent/yellowLight #FFF3CD",
+              "accent/green #6BCB77",
+              "accent/greenLight #E8F8EA",
+              "accent/purple #9B8FE8",
+              "accent/purpleLight #EEEAFF",
+              "accent/orange #FF8C42",
+              "accent/orangeLight #FFF0E5",
+              "accent/pink #FF6B8A"
+            ]},
+            { "group": "Tool Brands", "swatches": [
+              "tool/make #E8394D",
+              "tool/notion #7B61FF",
+              "tool/airtable #18BFFF",
+              "tool/openai #000000",
+              "tool/zapier #FF4F00",
+              "tool/googleSheets #0F9D58",
+              "tool/discord #5865F2",
+              "tool/slack #FF6B00",
+              "tool/claude #2D7FF9"
+            ]}
+          ]
+        },
+        {
+          "name": "Typography",
+          "styles": [
+            { "name": "Hero/H1", "font": "Plus Jakarta Sans", "weight": "ExtraBold (800)", "size": "clamp(41.6px → 64px)", "lineHeight": 1.1, "letterSpacing": "-0.03em" },
+            { "name": "Section/Title", "font": "Plus Jakarta Sans", "weight": "ExtraBold (800)", "size": "clamp(28.8px → 40px)", "lineHeight": 1.15, "letterSpacing": "-0.02em" },
+            { "name": "Section/Label", "font": "Caveat", "weight": "SemiBold (600)", "size": "18.4px", "color": "accent/purple", "bg": "accent/purpleLight" },
+            { "name": "Section/Subtitle", "font": "Plus Jakarta Sans", "weight": "Regular (400)", "size": "16px", "color": "text/muted", "lineHeight": 1.6 },
+            { "name": "Body/Default", "font": "Plus Jakarta Sans", "weight": "Regular (400)", "size": "14.4px", "color": "text/muted", "lineHeight": 1.6 },
+            { "name": "Body/Hero", "font": "Plus Jakarta Sans", "weight": "Regular (400)", "size": "17.6px", "color": "text/muted", "lineHeight": 1.6 },
+            { "name": "Label/NavLink", "font": "Plus Jakarta Sans", "weight": "Medium (500)", "size": "14.4px" },
+            { "name": "Label/Small", "font": "Plus Jakarta Sans", "weight": "SemiBold (600)", "size": "13px" },
+            { "name": "Label/XSmall", "font": "Plus Jakarta Sans", "weight": "SemiBold (600)", "size": "12.5px" },
+            { "name": "Annotation/Default", "font": "Caveat", "weight": "Regular (400)", "size": "19.2px" },
+            { "name": "Stat/Number", "font": "Plus Jakarta Sans", "weight": "ExtraBold (800)", "size": "32px", "letterSpacing": "-0.02em" }
+          ]
+        },
+        {
+          "name": "Spacing & Radii",
+          "note": "Base-8 spacing grid. Radii from sm=6px to pill=100px. See tokens.json for full values."
+        },
+        {
+          "name": "Shadows",
+          "elevations": [
+            { "name": "Shadow/SM", "value": "0 2px 8px rgba(0,0,0,0.04)", "usage": "Badges, subtle surfaces" },
+            { "name": "Shadow/MD", "value": "0 8px 30px rgba(0,0,0,0.06)", "usage": "Stats panel, hover cards" },
+            { "name": "Shadow/LG", "value": "0 16px 50px rgba(0,0,0,0.08)", "usage": "Package card hover" },
+            { "name": "Shadow/Yellow", "value": "0 4px 16px rgba(255,210,63,0.3)", "usage": "Primary button" },
+            { "name": "Shadow/YellowHover", "value": "0 6px 24px rgba(255,210,63,0.4)", "usage": "Primary button :hover" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "🧩 Components",
+      "description": "Reusable UI components. Each component has variants where applicable.",
+      "components": [
+        {
+          "name": "Logo",
+          "variants": ["Default"],
+          "anatomy": [
+            { "layer": "Icon (32×32)", "fill": "accent/yellow", "radius": "10px", "content": "⚡ emoji, centered" },
+            { "layer": "Wordmark", "text": "digitalsmiles", "font": "Plus Jakarta Sans", "weight": "ExtraBold (800)", "size": "20px", "letterSpacing": "-0.03em" }
+          ],
+          "layout": "Horizontal flex, gap=8px, align center"
+        },
+        {
+          "name": "Button/Primary",
+          "variants": ["Default", "Hover"],
+          "anatomy": [
+            { "layer": "Frame", "fill": "accent/yellow", "radius": "100px", "padding": "14px 32px" },
+            { "layer": "Label", "font": "Plus Jakarta Sans", "weight": "Bold (700)", "size": "0.95rem", "color": "text/primary" },
+            { "layer": "Arrow Icon", "type": "inline SVG", "size": "16×16", "stroke": "currentColor, 2.5px" }
+          ],
+          "states": {
+            "default": { "shadow": "0 4px 16px rgba(255,210,63,0.3)" },
+            "hover": { "translateY": "-2px", "shadow": "0 6px 24px rgba(255,210,63,0.4)" }
+          }
+        },
+        {
+          "name": "Button/Secondary",
+          "variants": ["Default", "Hover"],
+          "anatomy": [
+            { "layer": "Frame", "fill": "bg/white", "border": "1.5px solid rgba(0,0,0,0.06)", "radius": "100px", "padding": "14px 32px" },
+            { "layer": "Label", "font": "Plus Jakarta Sans", "weight": "SemiBold (600)", "size": "0.95rem", "color": "text/primary" }
+          ],
+          "states": {
+            "hover": { "borderColor": "#cccccc", "translateY": "-2px" }
+          }
+        },
+        {
+          "name": "Nav",
+          "variants": ["Desktop", "Mobile (≤900px)"],
+          "anatomy": [
+            { "layer": "Bar", "fill": "rgba(253,246,238,0.85)", "backdropBlur": "20px", "borderBottom": "1px solid rgba(0,0,0,0.06)", "padding": "16px 0" },
+            { "layer": "Logo", "component": "Logo" },
+            { "layer": "Links (Desktop only)", "items": ["Services", "How It Works", "Integrations", "Testimonials"], "style": "Label/NavLink" },
+            { "layer": "CTA Button", "text": "Book a Free Audit", "fill": "text/primary", "color": "#fff", "padding": "10px 22px", "radius": "100px", "weight": "SemiBold" }
+          ],
+          "behavior": "Fixed top, z-index 100. Links hidden on ≤900px."
+        },
+        {
+          "name": "Hero/Badge",
+          "anatomy": [
+            { "layer": "Frame", "fill": "bg/white", "border": "1px solid rgba(0,0,0,0.06)", "radius": "100px", "padding": "6px 16px 6px 8px", "shadow": "Shadow/SM" },
+            { "layer": "Dot (22×22)", "fill": "accent/green", "radius": "50%", "content": "✓ in white, 11.2px" },
+            { "layer": "Text", "value": "$50K+ delivered on Upwork · 5-Star Reviews", "style": "Label/Small" }
+          ]
+        },
+        {
+          "name": "Hero/Annotation",
+          "anatomy": [
+            { "layer": "Text", "font": "Caveat", "size": "20.8px", "color": "accent/purple", "rotation": "-6deg or +5deg" },
+            { "layer": "Arrow", "value": "↙ or inline", "font": "Caveat", "size": "22.4px" }
+          ],
+          "note": "Hidden on ≤900px. Positioned absolute relative to hero section."
+        },
+        {
+          "name": "Stats/Panel",
+          "anatomy": [
+            { "layer": "Panel", "fill": "bg/white", "border": "1px solid rgba(0,0,0,0.06)", "radius": "24px", "padding": "36px 48px", "shadow": "Shadow/MD" },
+            { "layer": "Grid", "columns": 4, "gap": "24px" },
+            { "layer": "Stat — Number", "style": "Stat/Number", "color": "text/primary" },
+            { "layer": "Stat — Label", "style": "Label/Small", "color": "text/muted" },
+            { "layer": "Divider", "type": "vertical line 1px", "height": "70% of stat height", "color": "rgba(0,0,0,0.06)", "position": "right edge of each non-last stat" }
+          ],
+          "responsive": "Collapse to 2 cols at ≤900px, dividers hidden"
+        },
+        {
+          "name": "Package/Card",
+          "variants": ["Default", "Popular (2nd card)"],
+          "anatomy": [
+            { "layer": "Card", "component": "card base", "padding": "32px 26px" },
+            { "layer": "Annotation (1st card only)", "font": "Caveat", "size": "17.6px", "color": "accent/orange", "rotation": "4deg", "position": "absolute top:-18px right:20px" },
+            { "layer": "Popular Badge (2nd card only)", "component": "Badge/Popular", "position": "absolute top:-12px right:16px" },
+            { "layer": "Icon (52×52)", "radius": "14px", "fill": "nth-child accent light bg" },
+            { "layer": "Name", "style": "1.1rem Bold" },
+            { "layer": "Price", "style": "1.4rem ExtraBold", "color": "nth-child accent color" },
+            { "layer": "Description", "style": "0.9rem Regular", "color": "text/muted" },
+            { "layer": "Feature list", "marker": "✓", "markerColor": "nth-child accent", "style": "0.85rem Regular" },
+            { "layer": "Draft tag (3rd card only)", "text": "⟡ Packaging in progress — enquire for details", "fill": "accent/purpleLight", "color": "accent/purple", "radius": "6px", "padding": "4px 12px", "size": "0.7rem Bold uppercase" }
+          ],
+          "tricolorPattern": {
+            "1": { "iconBg": "accent/yellowLight", "price": "accent/orange", "checkmark": "accent/orange" },
+            "2": { "iconBg": "accent/greenLight", "price": "accent/green", "checkmark": "accent/green" },
+            "3": { "iconBg": "accent/purpleLight", "price": "accent/purple", "checkmark": "accent/purple" }
+          }
+        },
+        {
+          "name": "Step/Card",
+          "anatomy": [
+            { "layer": "Frame", "padding": "28px 20px", "radius": "24px", "align": "center" },
+            { "layer": "Number (56×56)", "radius": "16px", "fill": "nth-child accent", "text": "auto-counter", "weight": "ExtraBold 800", "size": "20.8px" },
+            { "layer": "Heading", "style": "1.05rem Bold" },
+            { "layer": "Body", "style": "0.9rem Regular", "color": "text/muted" }
+          ],
+          "tricolorPattern": {
+            "1": { "numBg": "accent/yellow", "numColor": "text/primary" },
+            "2": { "numBg": "accent/green", "numColor": "#ffffff" },
+            "3": { "numBg": "accent/purple", "numColor": "#ffffff" }
+          },
+          "states": {
+            "hover": { "fill": "bg/cream" }
+          }
+        },
+        {
+          "name": "Tool/Pill",
+          "anatomy": [
+            { "layer": "Frame", "fill": "bg/white", "border": "1.5px solid rgba(0,0,0,0.06)", "radius": "100px", "padding": "12px 24px" },
+            { "layer": "Label", "weight": "SemiBold", "size": "0.88rem", "color": "text/primary" }
+          ],
+          "states": {
+            "hover": { "borderColor": "accent/yellow", "translateY": "-2px" }
+          }
+        },
+        {
+          "name": "Testimonial/Card",
+          "anatomy": [
+            { "layer": "Card", "component": "card base", "padding": "28px 24px" },
+            { "layer": "Stars", "text": "★★★★★", "size": "17.6px", "color": "accent/yellow", "letterSpacing": "2px" },
+            { "layer": "Title", "style": "1rem Bold" },
+            { "layer": "Quote", "style": "0.88rem Regular", "color": "text/muted", "lineHeight": 1.65 },
+            { "layer": "Author row — Avatar (40×40)", "radius": "50%", "fill": "nth-child accent" },
+            { "layer": "Author row — Name", "style": "0.85rem SemiBold" },
+            { "layer": "Author row — Role", "style": "0.78rem Regular", "color": "text/muted" }
+          ],
+          "tricolorPattern": {
+            "1": { "avatarBg": "accent/orange" },
+            "2": { "avatarBg": "accent/purple" },
+            "3": { "avatarBg": "accent/green" }
+          }
+        },
+        {
+          "name": "CTA/Section",
+          "anatomy": [
+            { "layer": "Container", "fill": "bg/dark", "radius": "24px", "margin": "0 24px 80px", "padding": "80px 60px", "overflow": "hidden" },
+            { "layer": "Glow::before", "position": "absolute top:-50% left:-20%", "size": "500×500", "fill": "radial-gradient yellow 15% transparent 70%" },
+            { "layer": "Glow::after", "position": "absolute bottom:-40% right:-15%", "size": "400×400", "fill": "radial-gradient purple 15% transparent 70%" },
+            { "layer": "Section Label", "bg": "rgba(155,143,232,0.2)", "color": "accent/purple", "zIndex": 2 },
+            { "layer": "Title", "style": "Section/Title", "color": "text/light", "maxWidth": "500px", "zIndex": 2 },
+            { "layer": "Subtitle", "color": "text/darkMuted", "zIndex": 2 },
+            { "layer": "CTA Button", "component": "Button/CTA", "zIndex": 2 },
+            { "layer": "Annotation", "font": "Caveat", "color": "accent/yellow", "text": "No commitment, just a friendly chat ↑" }
+          ]
+        },
+        {
+          "name": "Footer",
+          "anatomy": [
+            { "layer": "Border top", "color": "rgba(0,0,0,0.06)" },
+            { "layer": "4-col grid", "columns": "1.5fr 1fr 1fr 1.5fr", "gap": "40px" },
+            { "layer": "Brand col — Logo", "component": "Logo" },
+            { "layer": "Brand col — tagline", "style": "0.85rem Regular", "color": "text/muted", "maxWidth": "240px" },
+            { "layer": "Links col", "headingStyle": "0.85rem Bold", "linkStyle": "0.85rem Regular", "linkColor": "text/muted" },
+            { "layer": "Subscribe col — Input", "radius": "100px", "border": "1.5px solid rgba(0,0,0,0.06)", "focusBorder": "accent/yellow" },
+            { "layer": "Subscribe col — Button", "fill": "accent/yellow", "color": "text/primary", "radius": "100px", "weight": "Bold 700", "size": "0.82rem" },
+            { "layer": "Bottom bar — copyright", "style": "0.8rem Regular", "color": "text/muted" },
+            { "layer": "Bottom bar — socials (in, Up)", "color": "text/muted" }
+          ],
+          "responsive": "2 cols at ≤900px, 1 col at ≤600px"
+        }
+      ]
+    },
+    {
+      "name": "📐 Page Layout",
+      "description": "Full-page layout showing all sections in order with correct spacing",
+      "sections": [
+        {
+          "id": "nav",
+          "component": "Nav",
+          "position": "Fixed top"
+        },
+        {
+          "id": "hero",
+          "padding": "140px top, 80px bottom",
+          "background": "bg/cream",
+          "elements": [
+            "Hero/Badge",
+            "Hero/Annotation (right, +5deg)",
+            "H1: Stop doing manually what AI can do in seconds (highlight underline on 'AI can do in seconds')",
+            "Paragraph (max-width 540px)",
+            "Hero/Buttons: [Button/Primary 'Book a Free Audit'] + [Button/Secondary 'View Services']"
+          ],
+          "highlight": {
+            "description": "Yellow semi-transparent rectangle behind 'AI can do in seconds'",
+            "fill": "accent/yellow",
+            "opacity": 0.5,
+            "height": "14px",
+            "radius": "4px",
+            "position": "absolute bottom:2px, extends -4px beyond text on each side"
+          }
+        },
+        {
+          "id": "stats",
+          "padding": "0 top, 48px section",
+          "background": "bg/cream",
+          "elements": ["Stats/Panel (4 cols: $50K+, 10+, 100%, 🇦🇺)"]
+        },
+        {
+          "id": "services",
+          "padding": "80px",
+          "background": "bg/cream",
+          "layout": "section-center",
+          "elements": [
+            "Section/Label: Services",
+            "Section/Title: Three ways I can help",
+            "Section/Subtitle",
+            "Packages grid (3 cols): [Package/Card × 3]"
+          ]
+        },
+        {
+          "id": "how",
+          "padding": "80px",
+          "background": "bg/white",
+          "layout": "section-center",
+          "elements": [
+            "Section/Label: Process",
+            "Section/Title: How it works",
+            "Section/Subtitle",
+            "Steps grid (3 cols): [Step/Card × 3]"
+          ]
+        },
+        {
+          "id": "tools",
+          "padding": "80px",
+          "background": "bg/cream",
+          "layout": "section-center",
+          "elements": [
+            "Section/Label: Integrations",
+            "Section/Title: Tools I work with",
+            "Section/Subtitle",
+            "Tools pills (flex-wrap): Make.com, Claude API, Airtable, Notion, Zapier, Google Sheets, MCP, OpenAI, Webhooks, Slack, Gmail",
+            "Annotation: '→ And many more — if it has an API, I can connect it' (Caveat, accent/green)"
+          ]
+        },
+        {
+          "id": "proof",
+          "padding": "80px",
+          "background": "bg/cream",
+          "layout": "section-center",
+          "elements": [
+            "Section/Label: Testimonials",
+            "Section/Title: What clients are saying",
+            "Section/Subtitle",
+            "Testimonials grid (3 cols): [Testimonial/Card × 3]"
+          ]
+        },
+        {
+          "id": "contact",
+          "padding": "0 (margin handled internally)",
+          "background": "bg/cream",
+          "elements": ["CTA/Section"]
+        },
+        {
+          "id": "footer",
+          "elements": ["Footer"]
+        }
+      ]
+    },
+    {
+      "name": "📱 Responsive Breakpoints",
+      "description": "Key layout changes at 900px and 600px breakpoints",
+      "breakpoints": [
+        {
+          "maxWidth": 900,
+          "changes": [
+            "Nav: hide link list, show only Logo + CTA button",
+            "Hero: hide annotation elements",
+            "Stats: 4-col → 2-col grid, dividers hidden",
+            "Services/Steps/Testimonials: 3-col → 1-col grid",
+            "CTA Section: margin 0 16px, padding 60px 28px",
+            "Footer: 4-col → 2-col"
+          ]
+        },
+        {
+          "maxWidth": 600,
+          "changes": [
+            "Hero H1: force 32px (2rem) font size",
+            "All sections: padding 56px 0 (reduced from 80px)",
+            "Stats panel: reduce padding 28px 20px",
+            "Footer: 2-col → 1-col",
+            "Package grid: gap 16px"
+          ]
+        }
+      ]
+    }
+  ],
+  "fonts": {
+    "googleFonts": [
+      {
+        "family": "Plus Jakarta Sans",
+        "weights": [400, 500, 600, 700, 800],
+        "url": "https://fonts.google.com/specimen/Plus+Jakarta+Sans"
+      },
+      {
+        "family": "Caveat",
+        "weights": [400, 500, 600, 700],
+        "url": "https://fonts.google.com/specimen/Caveat"
+      }
+    ],
+    "figmaInstructions": "Install fonts locally or use Figma's Google Fonts integration. Add 'Plus Jakarta Sans' and 'Caveat' to the project."
+  },
+  "importInstructions": {
+    "step1": "Install the 'Tokens Studio for Figma' plugin (formerly Figma Tokens).",
+    "step2": "In the plugin, click 'Load from file/URL' and load figma/tokens.json.",
+    "step3": "Apply the token set order: global → semantic → components.",
+    "step4": "Install Plus Jakarta Sans and Caveat fonts in Figma (via Google Fonts or local install).",
+    "step5": "Create a new Figma file. Add 4 pages matching the pages listed in this file.",
+    "step6": "Build each component from the 'components' page using the token values.",
+    "step7": "Assemble the full-page layout on the 'Page Layout' page.",
+    "step8": "Add responsive frames at 1440px (desktop), 900px (tablet), 375px (mobile)."
+  }
+}
