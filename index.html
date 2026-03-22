@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Smiles — AI Automation Consulting</title>
+<meta name="description" content="AI workflow automation specialist. Make.com, Claude API, Airtable & MCP integrations. Save 10+ hours/week with intelligent automation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #FDF6EE;
+  --bg-white: #FFFFFF;
+  --bg-dark: #1A1A2E;
+  --bg-dark-card: #242440;
+  --text: #1A1A2E;
+  --text-muted: #6B6B80;
+  --text-light: #F0EDE8;
+  --accent-yellow: #FFD23F;
+  --accent-yellow-light: #FFF3CD;
+  --accent-green: #6BCB77;
+  --accent-green-light: #E8F8EA;
+  --accent-purple: #9B8FE8;
+  --accent-purple-light: #EEEAFF;
+  --accent-orange: #FF8C42;
+  --accent-orange-light: #FFF0E5;
+  --accent-pink: #FF6B8A;
+  --border: rgba(0,0,0,0.06);
+  --border-light: rgba(255,255,255,0.1);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+  --shadow-md: 0 8px 30px rgba(0,0,0,0.06);
+  --shadow-lg: 0 16px 50px rgba(0,0,0,0.08);
+  --radius: 16px;
+  --radius-lg: 24px;
+  --font-main: 'Plus Jakarta Sans', sans-serif;
+  --font-hand: 'Caveat', cursive;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-main); background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+
+.container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+/* ── Navigation ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 16px 0;
+  background: rgba(253,246,238,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+nav .container { display: flex; justify-content: space-between; align-items: center; }
+.logo {
+  font-weight: 800; font-size: 1.25rem;
+  letter-spacing: -0.03em; color: var(--text);
+  display: flex; align-items: center; gap: 8px;
+}
+.logo-icon {
+  width: 32px; height: 32px; border-radius: 10px;
+  background: var(--accent-yellow);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+}
+nav ul { display: flex; gap: 28px; list-style: none; }
+nav a {
+  color: var(--text-muted); text-decoration: none;
+  font-size: 0.9rem; font-weight: 500;
+  transition: color 0.3s;
+}
+nav a:hover { color: var(--text); }
+.nav-cta {
+  background: var(--text); color: #fff !important;
+  padding: 10px 22px; border-radius: 100px;
+  font-weight: 600; font-size: 0.85rem;
+  transition: all 0.3s;
+}
+.nav-cta:hover { background: #2d2d4a; transform: translateY(-1px); }
+
+/* ── Hero ── */
+.hero {
+  padding: 140px 0 80px;
+  text-align: center;
+  position: relative;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 16px 6px 8px;
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-size: 0.82rem; font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-sm);
+  animation: fadeUp 0.6s ease both;
+}
+.hero-badge-dot {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--accent-green);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem; color: #fff;
+}
+.hero h1 {
+  font-size: clamp(2.6rem, 5.5vw, 4rem);
+  font-weight: 800; line-height: 1.1;
+  letter-spacing: -0.03em;
+  max-width: 700px; margin: 0 auto 20px;
+  animation: fadeUp 0.6s ease 0.1s both;
+}
+.hero h1 .highlight {
+  position: relative; display: inline-block;
+}
+.hero h1 .highlight::after {
+  content: '';
+  position: absolute; bottom: 2px; left: -4px; right: -4px;
+  height: 14px;
+  background: var(--accent-yellow);
+  border-radius: 4px;
+  z-index: -1;
+  opacity: 0.5;
+}
+.hero-annotation {
+  font-family: var(--font-hand);
+  font-size: 1.3rem;
+  color: var(--accent-purple);
+  position: absolute;
+  transform: rotate(-6deg);
+}
+.hero-annotation-right {
+  right: 12%; top: 190px;
+  transform: rotate(5deg);
+}
+.hero-annotation-right::after {
+  content: '↙';
+  display: block;
+  font-family: var(--font-hand);
+  font-size: 1.4rem;
+  margin-top: -4px;
+  margin-left: 10px;
+}
+.hero p {
+  font-size: 1.1rem; color: var(--text-muted);
+  max-width: 540px; margin: 0 auto 36px;
+  animation: fadeUp 0.6s ease 0.2s both;
+}
+.hero-buttons {
+  display: flex; gap: 14px; justify-content: center;
+  animation: fadeUp 0.6s ease 0.3s both;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 32px;
+  background: var(--accent-yellow);
+  color: var(--text);
+  font-weight: 700; font-size: 0.95rem;
+  text-decoration: none;
+  border-radius: 100px;
+  transition: all 0.3s;
+  box-shadow: 0 4px 16px rgba(255,210,63,0.3);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(255,210,63,0.4); }
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 32px;
+  background: var(--bg-white);
+  color: var(--text);
+  font-weight: 600; font-size: 0.95rem;
+  text-decoration: none;
+  border-radius: 100px;
+  border: 1.5px solid var(--border);
+  transition: all 0.3s;
+}
+.btn-secondary:hover { border-color: #ccc; transform: translateY(-2px); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Stats ribbon ── */
+.stats {
+  padding: 48px 0;
+}
+.stats-inner {
+  background: var(--bg-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  padding: 36px 48px;
+  box-shadow: var(--shadow-md);
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  text-align: center;
+}
+.stat { position: relative; }
+.stat:not(:last-child)::after {
+  content: '';
+  position: absolute; right: 0; top: 15%; height: 70%;
+  width: 1px; background: var(--border);
+}
+.stat-number {
+  font-size: 2rem; font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+.stat-number .emoji { font-size: 1.8rem; }
+.stat-label { font-size: 0.82rem; color: var(--text-muted); margin-top: 2px; font-weight: 500; }
+
+/* ── Section shared ── */
+section { padding: 80px 0; }
+.section-label {
+  display: inline-block;
+  font-family: var(--font-hand);
+  font-size: 1.15rem; font-weight: 600;
+  color: var(--accent-purple);
+  background: var(--accent-purple-light);
+  padding: 2px 14px; border-radius: 6px;
+  margin-bottom: 10px;
+}
+.section-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+  line-height: 1.15;
+}
+.section-subtitle {
+  font-size: 1rem; color: var(--text-muted);
+  max-width: 520px;
+  margin-bottom: 48px;
+}
+.section-center { text-align: center; }
+.section-center .section-subtitle { margin-left: auto; margin-right: auto; }
+
+/* ── Packages ── */
+.packages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.package {
+  background: var(--bg-white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px 26px;
+  transition: all 0.4s;
+  position: relative;
+}
+.package:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.package-icon {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 18px;
+}
+.package:nth-child(1) .package-icon { background: var(--accent-yellow-light); }
+.package:nth-child(2) .package-icon { background: var(--accent-green-light); }
+.package:nth-child(3) .package-icon { background: var(--accent-purple-light); }
+
+.package-name {
+  font-weight: 700; font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+.package-price {
+  font-weight: 800; font-size: 1.4rem;
+  margin-bottom: 14px;
+}
+.package:nth-child(1) .package-price { color: var(--accent-orange); }
+.package:nth-child(2) .package-price { color: var(--accent-green); }
+.package:nth-child(3) .package-price { color: var(--accent-purple); }
+
+.package-desc {
+  font-size: 0.9rem; color: var(--text-muted);
+  margin-bottom: 18px; line-height: 1.6;
+}
+.package-features { list-style: none; }
+.package-features li {
+  font-size: 0.85rem; color: var(--text-muted);
+  padding: 5px 0 5px 24px;
+  position: relative;
+}
+.package-features li::before {
+  content: '✓'; position: absolute; left: 0;
+  font-weight: 700; font-size: 0.85rem;
+}
+.package:nth-child(1) .package-features li::before { color: var(--accent-orange); }
+.package:nth-child(2) .package-features li::before { color: var(--accent-green); }
+.package:nth-child(3) .package-features li::before { color: var(--accent-purple); }
+
+.package-draft {
+  display: inline-block;
+  margin-top: 14px; padding: 4px 12px;
+  font-size: 0.7rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  border-radius: 6px;
+  background: var(--accent-purple-light);
+  color: var(--accent-purple);
+}
+.package-annotation {
+  position: absolute; top: -18px; right: 20px;
+  font-family: var(--font-hand);
+  font-size: 1.1rem; color: var(--accent-orange);
+  transform: rotate(4deg);
+}
+.package-popular {
+  position: absolute; top: -12px; right: 16px;
+  background: var(--accent-green);
+  color: #fff;
+  font-size: 0.72rem; font-weight: 700;
+  padding: 4px 14px; border-radius: 100px;
+  text-transform: uppercase; letter-spacing: 0.04em;
+}
+
+/* ── How it works ── */
+.how-section { background: var(--bg-white); border-radius: 0; }
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  counter-reset: step;
+}
+.step {
+  counter-increment: step;
+  text-align: center;
+  padding: 28px 20px;
+  border-radius: var(--radius-lg);
+  transition: all 0.3s;
+}
+.step:hover { background: var(--bg); }
+.step-num-wrap {
+  width: 56px; height: 56px;
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 16px;
+  font-weight: 800; font-size: 1.3rem;
+  color: #fff;
+}
+.step:nth-child(1) .step-num-wrap { background: var(--accent-yellow); color: var(--text); }
+.step:nth-child(2) .step-num-wrap { background: var(--accent-green); }
+.step:nth-child(3) .step-num-wrap { background: var(--accent-purple); }
+.step-num-wrap::before { content: counter(step); }
+.step h3 {
+  font-weight: 700; font-size: 1.05rem;
+  margin-bottom: 8px;
+}
+.step p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+
+/* ── Tools / Integrations ── */
+.tools-section { text-align: center; }
+.tools-grid {
+  display: flex; flex-wrap: wrap; gap: 16px;
+  justify-content: center;
+  margin-top: 40px;
+}
+.tool-badge {
+  width: 64px; height: 64px;
+  border-radius: 18px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.72rem; font-weight: 700;
+  color: #fff;
+  transition: all 0.3s;
+  cursor: default;
+  position: relative;
+}
+.tool-badge:hover { transform: translateY(-4px) scale(1.08); }
+.tool-badge .tool-name {
+  position: absolute; bottom: -22px; left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.72rem; font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.tool-badge:nth-child(1) { background: #E8394D; }
+.tool-badge:nth-child(2) { background: #7B61FF; }
+.tool-badge:nth-child(3) { background: #18BFFF; }
+.tool-badge:nth-child(4) { background: #000000; }
+.tool-badge:nth-child(5) { background: #FF4F00; }
+.tool-badge:nth-child(6) { background: #0F9D58; }
+.tool-badge:nth-child(7) { background: #5865F2; }
+.tool-badge:nth-child(8) { background: #FF6B00; }
+.tool-badge:nth-child(9) { background: #2D7FF9; }
+
+.tool-text {
+  padding: 12px 24px;
+  background: var(--bg-white);
+  border: 1.5px solid var(--border);
+  border-radius: 100px;
+  font-size: 0.88rem; font-weight: 600;
+  color: var(--text);
+  transition: all 0.3s;
+}
+.tool-text:hover { border-color: var(--accent-yellow); transform: translateY(-2px); }
+
+.tools-pills {
+  display: flex; flex-wrap: wrap; gap: 12px;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.tools-annotation {
+  font-family: var(--font-hand);
+  font-size: 1.2rem;
+  color: var(--accent-green);
+  margin-top: 32px;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.tools-annotation::before { content: '→'; font-size: 1.3rem; }
+
+/* ── Testimonials ── */
+.proof-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.proof-card {
+  background: var(--bg-white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  transition: all 0.3s;
+}
+.proof-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.proof-stars { font-size: 1.1rem; margin-bottom: 14px; color: var(--accent-yellow); letter-spacing: 2px; }
+.proof-title { font-weight: 700; font-size: 1rem; margin-bottom: 10px; }
+.proof-quote {
+  font-size: 0.88rem; color: var(--text-muted);
+  line-height: 1.65; margin-bottom: 18px;
+}
+.proof-author {
+  display: flex; align-items: center; gap: 12px;
+}
+.proof-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.85rem; color: #fff;
+}
+.proof-card:nth-child(1) .proof-avatar { background: var(--accent-orange); }
+.proof-card:nth-child(2) .proof-avatar { background: var(--accent-purple); }
+.proof-card:nth-child(3) .proof-avatar { background: var(--accent-green); }
+.proof-name { font-weight: 600; font-size: 0.85rem; }
+.proof-role { font-size: 0.78rem; color: var(--text-muted); }
+
+/* ── CTA Section (dark) ── */
+.cta-section {
+  background: var(--bg-dark);
+  border-radius: var(--radius-lg);
+  margin: 0 24px 80px;
+  padding: 80px 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute; top: -50%; left: -20%;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(255,210,63,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta-section::after {
+  content: '';
+  position: absolute; bottom: -40%; right: -15%;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(155,143,232,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta-section .section-title {
+  color: var(--text-light);
+  max-width: 500px;
+  margin: 0 auto 14px;
+  position: relative; z-index: 2;
+}
+.cta-section .section-subtitle {
+  color: #9090A8;
+  margin: 0 auto 36px;
+  position: relative; z-index: 2;
+}
+.cta-section .section-label {
+  background: rgba(155,143,232,0.2);
+  color: var(--accent-purple);
+  position: relative; z-index: 2;
+}
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 40px;
+  background: var(--accent-yellow);
+  color: var(--text);
+  font-weight: 700; font-size: 1rem;
+  text-decoration: none;
+  border-radius: 100px;
+  transition: all 0.3s;
+  position: relative; z-index: 2;
+  box-shadow: 0 4px 24px rgba(255,210,63,0.3);
+}
+.cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(255,210,63,0.4); }
+.cta-annotation {
+  font-family: var(--font-hand);
+  font-size: 1.2rem;
+  color: var(--accent-yellow);
+  margin-top: 20px;
+  position: relative; z-index: 2;
+}
+
+/* ── Footer ── */
+footer {
+  padding: 48px 0 32px;
+  border-top: 1px solid var(--border);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+.footer-brand .logo { margin-bottom: 12px; }
+.footer-brand p { font-size: 0.85rem; color: var(--text-muted); max-width: 240px; line-height: 1.6; }
+.footer-col h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 14px; }
+.footer-col a {
+  display: block;
+  font-size: 0.85rem; color: var(--text-muted);
+  text-decoration: none; padding: 4px 0;
+  transition: color 0.3s;
+}
+.footer-col a:hover { color: var(--text); }
+.footer-subscribe p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px; line-height: 1.5; }
+.footer-email-row {
+  display: flex; gap: 8px;
+}
+.footer-email-row input {
+  flex: 1; padding: 10px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 100px;
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+  background: var(--bg-white);
+  outline: none;
+  transition: border-color 0.3s;
+}
+.footer-email-row input:focus { border-color: var(--accent-yellow); }
+.footer-email-row button {
+  padding: 10px 20px;
+  background: var(--accent-yellow);
+  color: var(--text);
+  font-weight: 700; font-size: 0.82rem;
+  border: none; border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: var(--font-main);
+}
+.footer-email-row button:hover { background: #f0c430; }
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  font-size: 0.8rem; color: var(--text-muted);
+}
+.footer-socials { display: flex; gap: 16px; }
+.footer-socials a {
+  color: var(--text-muted); text-decoration: none;
+  transition: color 0.3s; font-size: 1.1rem;
+}
+.footer-socials a:hover { color: var(--text); }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .packages-grid, .steps-grid, .proof-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .stat:not(:last-child)::after { display: none; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+  nav ul { display: none; }
+  .hero-annotation { display: none; }
+  .cta-section { margin: 0 16px 60px; padding: 60px 28px; }
+}
+@media (max-width: 600px) {
+  .hero h1 { font-size: 2rem; }
+  section { padding: 56px 0; }
+  .stats-inner { padding: 28px 20px; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .packages-grid { gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <div class="container">
+    <div class="logo">
+      <div class="logo-icon">⚡</div>
+      digitalsmiles
+    </div>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#tools">Integrations</a></li>
+      <li><a href="#proof">Testimonials</a></li>
+      <li><a href="#contact" class="nav-cta">Book a Free Audit</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">
+      <span class="hero-badge-dot">✓</span>
+      $50K+ delivered on Upwork · 5-Star Reviews
+    </div>
+
+    <span class="hero-annotation hero-annotation-right">Your new secret weapon!</span>
+
+    <h1>Stop doing manually<br>what <span class="highlight">AI can do in seconds</span></h1>
+
+    <p>I build intelligent automation workflows that save small businesses 10+ hours every week. Make.com, Claude API, Airtable — connected, configured, and running while you sleep.</p>
+
+    <div class="hero-buttons">
+      <a href="#contact" class="btn-primary">
+        Book a Free Audit
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#services" class="btn-secondary">View Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="stats" style="padding-top: 0;">
+  <div class="container">
+    <div class="stats-inner">
+      <div class="stats-grid">
+        <div class="stat">
+          <div class="stat-number">$50K+</div>
+          <div class="stat-label">Delivered on Upwork</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">10+</div>
+          <div class="stat-label">Hours/Week Saved Per Client</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Job Success Rate</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number"><span class="emoji">🇦🇺</span></div>
+          <div class="stat-label">Melbourne, Australia</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services / Packages -->
+<section id="services">
+  <div class="container section-center">
+    <div class="section-label">Services</div>
+    <div class="section-title">Three ways I can help</div>
+    <div class="section-subtitle">From a quick audit to a full AI-powered workflow build — pick the level that fits where you're at.</div>
+
+    <div class="packages-grid">
+      <!-- Package 1 -->
+      <div class="package">
+        <div class="package-annotation">Start here! ↓</div>
+        <div class="package-icon">⚡</div>
+        <div class="package-name">AI Automation Audit</div>
+        <div class="package-price">$500–$800</div>
+        <p class="package-desc">A focused session to uncover where AI can save you the most time — plus one quick-win automation built and running before we're done.</p>
+        <ul class="package-features">
+          <li>30-minute discovery call</li>
+          <li>Written report: 3–5 automation opportunities</li>
+          <li>One quick-win implementation included</li>
+          <li>ROI estimate for each opportunity</li>
+        </ul>
+      </div>
+
+      <!-- Package 2 -->
+      <div class="package">
+        <div class="package-popular">Most Popular</div>
+        <div class="package-icon">🔧</div>
+        <div class="package-name">Done-for-You AI Workflow</div>
+        <div class="package-price">$1,500–$3,000</div>
+        <p class="package-desc">I build your complete automation stack end-to-end. You describe the problem; I deliver a working system with documentation and handover.</p>
+        <ul class="package-features">
+          <li>Full Make.com + Airtable + AI integration</li>
+          <li>Lead qualification, content repurposing & more</li>
+          <li>Complete documentation & handover guide</li>
+          <li>2 weeks post-launch support</li>
+        </ul>
+      </div>
+
+      <!-- Package 3 -->
+      <div class="package">
+        <div class="package-icon">🧠</div>
+        <div class="package-name">MCP Integration Specialist</div>
+        <div class="package-price">$2,000–$5,000</div>
+        <p class="package-desc">Connect your existing business tools to AI agents via Model Context Protocol — the next evolution of AI automation that almost nobody else offers yet.</p>
+        <ul class="package-features">
+          <li>MCP server setup & configuration</li>
+          <li>Connect existing tools to AI agents</li>
+          <li>Custom integration architecture</li>
+          <li>Ongoing optimisation available</li>
+        </ul>
+        <div class="package-draft">⟡ Packaging in progress — enquire for details</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section id="how" class="how-section">
+  <div class="container section-center">
+    <div class="section-label">Process</div>
+    <div class="section-title">How it works</div>
+    <div class="section-subtitle">No jargon, no fluff. Here's what happens when we work together.</div>
+
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num-wrap"></div>
+        <h3>Free 15-Minute Audit</h3>
+        <p>We jump on a quick call. You tell me what's eating your time. I tell you exactly what I'd automate and roughly what it'd save you. No obligation.</p>
+      </div>
+      <div class="step">
+        <div class="step-num-wrap"></div>
+        <h3>Build & Test</h3>
+        <p>I build your automation workflow, test it thoroughly, and document everything so you (or your team) actually understand how it works.</p>
+      </div>
+      <div class="step">
+        <div class="step-num-wrap"></div>
+        <h3>Launch & Support</h3>
+        <p>We go live. I stick around for two weeks to make sure everything runs smoothly and tweak anything that needs adjusting.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Integrations -->
+<section id="tools" class="tools-section">
+  <div class="container section-center">
+    <div class="section-label">Integrations</div>
+    <div class="section-title">Tools I work with</div>
+    <div class="section-subtitle">Your existing tools, supercharged with AI automation.</div>
+
+    <div class="tools-pills">
+      <span class="tool-text">Make.com</span>
+      <span class="tool-text">Claude API</span>
+      <span class="tool-text">Airtable</span>
+      <span class="tool-text">Notion</span>
+      <span class="tool-text">Zapier</span>
+      <span class="tool-text">Google Sheets</span>
+      <span class="tool-text">MCP</span>
+      <span class="tool-text">OpenAI</span>
+      <span class="tool-text">Webhooks</span>
+      <span class="tool-text">Slack</span>
+      <span class="tool-text">Gmail</span>
+    </div>
+    <div class="tools-annotation">And many more — if it has an API, I can connect it</div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section id="proof">
+  <div class="container section-center">
+    <div class="section-label">Testimonials</div>
+    <div class="section-title">What clients are saying</div>
+    <div class="section-subtitle">$50,000+ earned on Upwork with consistently top-rated reviews.</div>
+
+    <div class="proof-grid">
+      <div class="proof-card">
+        <div class="proof-stars">★★★★★</div>
+        <div class="proof-title">Placeholder testimonial</div>
+        <p class="proof-quote">"Add a quote from a past Upwork client about the quality of your automation work and how much time it saved them."</p>
+        <div class="proof-author">
+          <div class="proof-avatar">C</div>
+          <div>
+            <div class="proof-name">Client Name</div>
+            <div class="proof-role">Industry / Role</div>
+          </div>
+        </div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-stars">★★★★★</div>
+        <div class="proof-title">Placeholder testimonial</div>
+        <p class="proof-quote">"Pull your best review from Upwork and add it here. Specifics about hours saved or processes automated work best."</p>
+        <div class="proof-author">
+          <div class="proof-avatar">J</div>
+          <div>
+            <div class="proof-name">Client Name</div>
+            <div class="proof-role">Industry / Role</div>
+          </div>
+        </div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-stars">★★★★★</div>
+        <div class="proof-title">Placeholder testimonial</div>
+        <p class="proof-quote">"A third testimonial slot — three looks more complete than two. Even a short Upwork review works great here."</p>
+        <div class="proof-author">
+          <div class="proof-avatar">A</div>
+          <div>
+            <div class="proof-name">Client Name</div>
+            <div class="proof-role">Industry / Role</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div id="contact">
+  <div class="cta-section">
+    <div class="section-label">Get Started</div>
+    <div class="section-title">Let's find your biggest automation win</div>
+    <div class="section-subtitle">Book a free 15-minute audit. No pitch, no pressure — just a quick look at where AI could save you serious time.</div>
+    <!-- PLACEHOLDER: Replace href with your Calendly/booking link -->
+    <a href="#" class="cta-btn">
+      Book Your Free Audit
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+    <div class="cta-annotation">No commitment, just a friendly chat ↑</div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-icon">⚡</div>
+          digitalsmiles
+        </div>
+        <p>AI automation consulting for small businesses. Save time, reduce errors, scale smarter.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="#services">Services</a>
+        <a href="#how">How It Works</a>
+        <a href="#tools">Integrations</a>
+        <a href="#proof">Testimonials</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="#">Upwork Profile</a>
+        <a href="#">LinkedIn</a>
+        <a href="mailto:hello@digitalsmiles.io">Email</a>
+      </div>
+      <div class="footer-subscribe">
+        <h4 style="font-size: 0.85rem; font-weight: 700; margin-bottom: 8px;">Stay updated with automation tips!</h4>
+        <p>Short, useful emails about AI automation — no spam, ever.</p>
+        <div class="footer-email-row">
+          <input type="email" placeholder="Enter your email">
+          <button>Subscribe</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Digital Smiles. All rights reserved.</span>
+      <div class="footer-socials">
+        <a href="#" title="LinkedIn">in</a>
+        <a href="#" title="Upwork">Up</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
