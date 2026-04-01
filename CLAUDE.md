@@ -160,3 +160,13 @@ The CTA section uses `--bg-dark` with:
 7. **Respect the container** — all content within `.container` at `max-width: 1120px`.
 8. **Add responsive rules** — ensure new sections gracefully collapse at `900px` and `600px`.
 9. **No external JS dependencies** — keep the site static and lightweight.
+
+## Git Workflow
+
+- **`production`** — the main branch (renamed from `main`). This is the live/release branch.
+- **`staging`** — integration branch. All feature work is merged here first.
+
+**Branch workflow:**
+1. Create new branches from `staging`
+2. Merge feature branches → `staging`
+3. When ready to release, merge `staging` → `production`

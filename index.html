@@ -19,6 +19,17 @@
   gtag('config', 'G-SXK048250Z');
 </script>
 <style>
+@font-face {
+  font-family: 'Recoleta Alt';
+  src: url('assets/fonts/Recoleta Alt Bold.woff2') format('woff2'),
+       url('assets/fonts/Recoleta Alt Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+h1, h2, h3 { font-family: 'Recoleta Alt', serif; font-weight: 700; }
+
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
@@ -50,9 +61,9 @@
 }
 
 html { scroll-behavior: smooth; }
-body { font-family: var(--font-main); background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+body { font-family: var(--font-main); background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; font-size: 1.125rem; letter-spacing: 0.005em; }
 
-.container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+.container { max-width: 1300px; margin: 0 auto; padding: 0 24px; }
 
 /* ── Navigation ── */
 nav {
@@ -114,10 +125,10 @@ nav a:hover { color: var(--text); }
   font-size: 0.7rem; color: #fff;
 }
 .hero h1 {
-  font-size: clamp(2.6rem, 5.5vw, 4rem);
+  font-size: clamp(2.6rem, 5.5vw, 5rem);
   font-weight: 800; line-height: 1.1;
   letter-spacing: -0.03em;
-  max-width: 700px; margin: 0 auto 20px;
+  max-width: 900px; margin: 0 auto 20px;
   animation: fadeUp 0.6s ease 0.1s both;
 }
 .hero h1 .highlight {
@@ -423,19 +434,20 @@ section { padding: 80px 0; }
 .tools-annotation::before { content: '→'; font-size: 1.3rem; }
 
 /* ── Testimonials ── */
+.proof-section { background: var(--bg-white); }
 .proof-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 .proof-card {
-  background: var(--bg-white);
-  border: 1.5px solid var(--border);
+  background: var(--bg);
+  border: 1.5px solid rgba(0,0,0,0.05);
   border-radius: var(--radius-lg);
   padding: 28px 24px;
   transition: all 0.3s;
 }
-.proof-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.proof-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); background: var(--bg-white); }
 .proof-stars { font-size: 1.1rem; margin-bottom: 14px; color: var(--accent-yellow); letter-spacing: 2px; }
 .proof-title { font-weight: 700; font-size: 1rem; margin-bottom: 10px; }
 .proof-quote {
@@ -455,6 +467,77 @@ section { padding: 80px 0; }
 .proof-card:nth-child(3) .proof-avatar { background: var(--accent-green); }
 .proof-name { font-weight: 600; font-size: 0.85rem; }
 .proof-role { font-size: 0.78rem; color: var(--text-muted); }
+
+/* ── About ── */
+.about-inner {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+  background: var(--bg-white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 52px 56px;
+  box-shadow: var(--shadow-md);
+}
+.about-photo-col {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.about-photo-wrap {
+  position: relative;
+}
+.about-photo {
+  width: 148px;
+  height: 148px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  border: 4px solid var(--accent-yellow);
+  box-shadow: 0 0 0 8px var(--accent-yellow-light), var(--shadow-md);
+}
+.about-photo-annotation {
+  font-family: var(--font-hand);
+  font-size: 1.1rem;
+  color: var(--accent-purple);
+  transform: rotate(-5deg);
+  margin-top: 14px;
+  text-align: center;
+}
+.about-content { flex: 1; }
+.about-content .section-title { margin-bottom: 16px; }
+.about-content p {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+.about-content p:last-of-type { margin-bottom: 0; }
+.about-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+.about-tag {
+  padding: 6px 16px;
+  border-radius: 100px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  background: var(--accent-yellow-light);
+  color: var(--text);
+  border: 1.5px solid rgba(255,210,63,0.3);
+}
+.about-tag:nth-child(2) { background: var(--accent-green-light); border-color: rgba(107,203,119,0.3); }
+.about-tag:nth-child(3) { background: var(--accent-purple-light); border-color: rgba(155,143,232,0.3); }
+.about-tag:nth-child(4) { background: var(--accent-orange-light); border-color: rgba(255,140,66,0.3); }
+
+@media (max-width: 900px) {
+  .about-inner { flex-direction: column; gap: 36px; padding: 40px 28px; text-align: center; }
+  .about-tags { justify-content: center; }
+}
 
 /* ── CTA Section (dark) ── */
 .cta-section {
@@ -602,14 +685,14 @@ footer {
 <nav>
   <div class="container">
     <div class="logo">
-      <div class="logo-icon">⚡</div>
-      Digital Smiles
+      <img src="assets/img/digital-smiles-website-logo.png" alt="Digital Smiles" style="height: 70px; width: auto;">
     </div>
     <ul>
       <li><a href="#services">Services</a></li>
       <li><a href="#how">How It Works</a></li>
       <li><a href="#tools">Integrations</a></li>
       <li><a href="#proof">Testimonials</a></li>
+      <li><a href="#about">About</a></li>
       <li><a href="#contact" class="nav-cta">Book a Free Audit</a></li>
     </ul>
   </div>
@@ -669,7 +752,7 @@ footer {
 <section id="services">
   <div class="container section-center">
     <div class="section-label">Services</div>
-    <div class="section-title">Three ways we can help</div>
+    <h2 class="section-title">Three ways we can help</h2>
     <div class="section-subtitle">We offer everything from a strategic audit to a fully engineered system build. Choose the level of support your team needs</div>
 
     <div class="packages-grid">
@@ -724,7 +807,7 @@ footer {
 <section id="how" class="how-section">
   <div class="container section-center">
     <div class="section-label">Process</div>
-    <div class="section-title">How it works</div>
+    <h2 class="section-title">How it works</h2>
     <div class="section-subtitle">No jargon, no fluff. Here's what happens when we work together.</div>
 
     <div class="steps-grid">
@@ -751,7 +834,7 @@ footer {
 <section id="tools" class="tools-section">
   <div class="container section-center">
     <div class="section-label">Integrations</div>
-    <div class="section-title">Tools I work with</div>
+    <h2 class="section-title">Tools I work with</h2>
     <div class="section-subtitle">Your existing tools, supercharged with AI automation.</div>
 
     <div class="tools-pills">
@@ -772,10 +855,10 @@ footer {
 </section>
 
 <!-- Testimonials -->
-<section id="proof">
+<section id="proof" class="proof-section">
   <div class="container section-center">
     <div class="section-label">Testimonials</div>
-    <div class="section-title">What clients are saying</div>
+    <h2 class="section-title">What clients are saying</h2>
     <div class="section-subtitle">$50,000+ earned on Upwork with consistently top-rated reviews.</div>
 
     <div class="proof-grid">
@@ -819,11 +902,38 @@ footer {
   </div>
 </section>
 
+<!-- About -->
+<section id="about">
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-photo-col">
+        <div class="about-photo-wrap">
+          <!-- Drop your profile photo at assets/img/profile.jpg -->
+          <img src="assets/img/profile.png" alt="Steph Miles" class="about-photo">
+        </div>
+        <div class="about-photo-annotation">That's me! 👋</div>
+      </div>
+      <div class="about-content">
+        <div class="section-label">About</div>
+        <h2 class="section-title">Hi, I'm Steph</h2>
+        <p>I'm a Melbourne-based AI automation consultant who helps small businesses stop drowning in repetitive tasks. I got into this work because I saw how much time smart, capable teams were wasting on things that could easily be automated — and I wanted to fix that.</p>
+        <p>I work with founders and operators who are serious about scaling. Whether that's connecting your CRM to your inbox, building AI-powered lead pipelines, or creating end-to-end workflows in Make.com — I'm here to make it happen, without the jargon.</p>
+        <div class="about-tags">
+          <span class="about-tag">Make.com Expert</span>
+          <span class="about-tag">Claude API</span>
+          <span class="about-tag">Airtable</span>
+          <span class="about-tag">Melbourne, AU 🇦🇺</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <div id="contact">
   <div class="cta-section">
     <div class="section-label">Get Started</div>
-    <div class="section-title">Let's find your biggest automation win</div>
+    <h2 class="section-title">Let's find your biggest automation win</h2>
     <div class="section-subtitle">Book a free 15-minute audit. No pitch, no pressure — just a quick look at where AI could save you serious time.</div>
     <!-- PLACEHOLDER: Replace href with your Calendly/booking link -->
     <a href="#" class="cta-btn">
@@ -840,8 +950,7 @@ footer {
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="logo">
-          <div class="logo-icon">⚡</div>
-          digitalsmiles
+          <img src="assets/img/digital-smiles-website-logo.png" alt="Digital Smiles" style="height: 70px; width: auto;">
         </div>
         <p>AI automation consulting for small businesses. Save time, reduce errors, scale smarter.</p>
       </div>
