@@ -10,9 +10,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SXK048250Z"></script>
@@ -24,6 +22,22 @@
   gtag('config', 'G-SXK048250Z');
 </script>
 <style>
+@font-face {
+  font-family: 'Montserrat';
+  src: url('assets/fonts/montserrat-latin-variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Caveat';
+  src: url('assets/fonts/caveat-latin-variable.woff2') format('woff2');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @font-face {
   font-family: 'Recoleta Alt';
   src: url('assets/fonts/Recoleta Alt Bold.woff2') format('woff2'),
@@ -61,7 +75,7 @@ h1, h2, h3 { font-family: 'Recoleta Alt', serif; font-weight: 700; }
   --shadow-lg: 0 16px 50px rgba(0,0,0,0.08);
   --radius: 16px;
   --radius-lg: 24px;
-  --font-main: 'Plus Jakarta Sans', sans-serif;
+  --font-main: 'Montserrat', sans-serif;
   --font-hand: 'Caveat', cursive;
 }
 
@@ -83,6 +97,12 @@ nav .container { display: flex; justify-content: space-between; align-items: cen
   font-weight: 800; font-size: 1.25rem;
   letter-spacing: -0.03em; color: var(--text);
   display: flex; align-items: center; gap: 8px;
+  min-width: 0;
+}
+.logo img {
+  display: block;
+  width: auto; height: auto;
+  max-width: 100%; max-height: 70px;
 }
 .logo-icon {
   width: 32px; height: 32px; border-radius: 10px;
@@ -117,7 +137,7 @@ nav a:hover { color: var(--text); }
   background: var(--bg-white);
   border: 1px solid var(--border);
   border-radius: 100px;
-  font-size: 0.82rem; font-weight: 600;
+  font-size: 0.82rem; font-weight: 400;
   color: var(--text-muted);
   margin-bottom: 24px;
   box-shadow: var(--shadow-sm);
@@ -723,7 +743,7 @@ footer {
   .hero h1 { font-size: 2rem; }
   section { padding: 56px 0; }
   .stats-inner { padding: 28px 20px; }
-  .footer-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: minmax(0, 1fr); }
   .packages-grid { gap: 16px; }
 }
 </style>
@@ -734,7 +754,7 @@ footer {
 <nav>
   <div class="container">
     <div class="logo">
-      <img src="assets/img/digital-smiles-website-logo.png" alt="Digital Smiles" style="height: 70px; width: auto;">
+      <img src="assets/img/digitalsmileslogo.svg" alt="Digital Smiles" width="1099" height="236">
     </div>
     <ul>
       <li><a href="#services">Services</a></li>
@@ -752,14 +772,14 @@ footer {
   <div class="container">
     <div class="hero-badge">
       <span class="hero-badge-dot">✓</span>
-      $50K+ delivered on Upwork · 5-Star Reviews
+      <span>YOUR TECHNOLOGY <strong>PARTNER</strong> FOR YOUR BUSINESS SYSTEMS</span>
     </div>
 
     <span class="hero-annotation hero-annotation-right">Workflow Engineering</span>
 
     <h1>Turn messy processes <br>into <span class="highlight">bulletproof systems</span></h1>
 
-    <p>Equip your team with the infrastructure to scale. I build automated workflows that connect your existing tools, letting you handle more volume without the burnout.</p>
+    <p>Equip your team with the infrastructure to scale. I design, build, and own the technology that powers your businesses growth.</p>
 
     <div class="hero-buttons">
       <a href="mailto:hello@digitalsmiles.io" class="btn-primary" data-contact-open aria-haspopup="dialog" aria-controls="contact-dialog">
@@ -1019,7 +1039,7 @@ footer {
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="logo">
-          <img src="assets/img/digital-smiles-website-logo.png" alt="Digital Smiles" style="height: 70px; width: auto;">
+          <img src="assets/img/digitalsmileslogo.svg" alt="Digital Smiles" width="1099" height="236">
         </div>
         <p>AI automation consulting for small businesses. Save time, reduce errors, scale smarter.</p>
       </div>
