@@ -7,7 +7,7 @@
 <meta name="description" content="AI workflow automation specialist. Make.com, Claude API, Airtable & MCP integrations. Save 10+ hours/week with intelligent automation.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Kedebideri:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SXK048250Z"></script>
@@ -18,17 +18,10 @@
 
   gtag('config', 'G-SXK048250Z');
 </script>
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/figma-colours.css">
 <style>
-@font-face {
-  font-family: 'Recoleta Alt';
-  src: url('assets/fonts/Recoleta Alt Bold.woff2') format('woff2'),
-       url('assets/fonts/Recoleta Alt Bold.otf') format('opentype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-h1, h2, h3 { font-family: 'Recoleta Alt', serif; font-weight: 700; }
+h1, h2, h3 { font-family: var(--font-heading); font-weight: 700; }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -56,8 +49,6 @@ h1, h2, h3 { font-family: 'Recoleta Alt', serif; font-weight: 700; }
   --shadow-lg: 0 16px 50px rgba(0,0,0,0.08);
   --radius: 16px;
   --radius-lg: 24px;
-  --font-main: 'Plus Jakarta Sans', sans-serif;
-  --font-hand: 'Caveat', cursive;
 }
 
 html { scroll-behavior: smooth; }
@@ -100,77 +91,6 @@ nav a:hover { color: var(--text); }
 }
 .nav-cta:hover { background: #2d2d4a; transform: translateY(-1px); }
 
-/* ── Hero ── */
-.hero {
-  padding: 140px 0 80px;
-  text-align: center;
-  position: relative;
-}
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 6px 16px 6px 8px;
-  background: var(--bg-white);
-  border: 1px solid var(--border);
-  border-radius: 100px;
-  font-size: 0.82rem; font-weight: 600;
-  color: var(--text-muted);
-  margin-bottom: 24px;
-  box-shadow: var(--shadow-sm);
-  animation: fadeUp 0.6s ease both;
-}
-.hero-badge-dot {
-  width: 22px; height: 22px; border-radius: 50%;
-  background: var(--accent-green);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.7rem; color: #fff;
-}
-.hero h1 {
-  font-size: clamp(2.6rem, 5.5vw, 5rem);
-  font-weight: 800; line-height: 1.1;
-  letter-spacing: -0.03em;
-  max-width: 900px; margin: 0 auto 20px;
-  animation: fadeUp 0.6s ease 0.1s both;
-}
-.hero h1 .highlight {
-  position: relative; display: inline-block;
-}
-.hero h1 .highlight::after {
-  content: '';
-  position: absolute; bottom: 2px; left: -4px; right: -4px;
-  height: 14px;
-  background: var(--accent-yellow);
-  border-radius: 4px;
-  z-index: -1;
-  opacity: 0.5;
-}
-.hero-annotation {
-  font-family: var(--font-hand);
-  font-size: 1.3rem;
-  color: var(--accent-purple);
-  position: absolute;
-  transform: rotate(-6deg);
-}
-.hero-annotation-right {
-  right: 12%; top: 190px;
-  transform: rotate(5deg);
-}
-.hero-annotation-right::after {
-  content: '↙';
-  display: block;
-  font-family: var(--font-hand);
-  font-size: 1.4rem;
-  margin-top: -4px;
-  margin-left: 10px;
-}
-.hero p {
-  font-size: 1.1rem; color: var(--text-muted);
-  max-width: 540px; margin: 0 auto 36px;
-  animation: fadeUp 0.6s ease 0.2s both;
-}
-.hero-buttons {
-  display: flex; gap: 14px; justify-content: center;
-  animation: fadeUp 0.6s ease 0.3s both;
-}
 .btn-primary {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 14px 32px;
@@ -709,62 +629,57 @@ footer {
   .stat:not(:last-child)::after { display: none; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
   nav ul { display: none; }
-  .hero-annotation { display: none; }
   .cta-section { margin: 0 16px 60px; padding: 60px 28px; }
 }
 @media (max-width: 600px) {
   .contact-dialog { padding: 28px 20px; }
-  .hero-buttons { flex-wrap: wrap; }
-  .hero h1 { font-size: 2rem; }
   section { padding: 56px 0; }
   .stats-inner { padding: 28px 20px; }
   .footer-grid { grid-template-columns: 1fr; }
   .packages-grid { gap: 16px; }
 }
 </style>
+<link rel="stylesheet" href="assets/css/figma-typography.css">
+<link rel="stylesheet" href="assets/css/hero.css">
 </head>
 <body>
 
-<!-- Navigation -->
-<nav>
-  <div class="container">
-    <div class="logo">
-      <img src="assets/img/digital-smiles-website-logo.png" alt="Digital Smiles" style="height: 70px; width: auto;">
-    </div>
-    <ul>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#how">How It Works</a></li>
-      <li><a href="#tools">Integrations</a></li>
-      <li><a href="#proof">Testimonials</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="mailto:hello@digitalsmiles.io" class="nav-cta" data-contact-open aria-haspopup="dialog" aria-controls="contact-dialog">Let's Talk</a></li>
-    </ul>
-  </div>
-</nav>
-
-<!-- Hero -->
-<section class="hero">
-  <div class="container">
-    <div class="hero-badge">
-      <span class="hero-badge-dot">✓</span>
-      $50K+ delivered on Upwork · 5-Star Reviews
-    </div>
-
-    <span class="hero-annotation hero-annotation-right">Workflow Engineering</span>
-
-    <h1>Turn messy processes <br>into <span class="highlight">bulletproof systems</span></h1>
-
-    <p>Equip your team with the infrastructure to scale. I build automated workflows that connect your existing tools, letting you handle more volume without the burnout.</p>
-
-    <div class="hero-buttons">
-      <a href="mailto:hello@digitalsmiles.io" class="btn-primary" data-contact-open aria-haspopup="dialog" aria-controls="contact-dialog">
-        Let's Talk
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+<!-- Home Page V3 — Figma Website Design -->
+<div class="home-intro" id="home">
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a class="site-brand" href="#home" aria-label="Digital Smiles home">
+        <img src="assets/img/hero/digital-smiles-logo.svg" width="226" height="39" alt="Digital Smiles">
       </a>
-      <a href="#services" class="btn-secondary">View Services</a>
+      <ul class="site-nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About Me</a></li>
+      </ul>
+      <a href="mailto:hello@digitalsmiles.io" class="hero-nav-cta" data-contact-open aria-haspopup="dialog" aria-controls="contact-dialog">Let's Talk</a>
     </div>
-  </div>
-</section>
+  </nav>
+
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-layout">
+      <img class="hero-spark" src="assets/img/hero/spark.png" width="86" height="86" alt="" aria-hidden="true">
+      <div class="hero-copy">
+        <div class="hero-heading-group">
+          <p class="hero-eyebrow body-small-uppercase">Business workflow engineering</p>
+          <h1 class="heading-1" id="hero-heading">Turn messy business processes into <span class="hero-highlight">bulletproof systems</span></h1>
+        </div>
+        <p class="hero-description headings-3">I build automated workflows that connect your existing tools, using AI where valuable to let you handle more volume without the burnout.</p>
+        <div class="hero-actions">
+          <a href="mailto:hello@digitalsmiles.io" class="hero-consult" data-contact-open aria-haspopup="dialog" aria-controls="contact-dialog">
+            Book Free Consult
+            <img src="assets/img/hero/arrow-right.svg" width="16" height="16" alt="" aria-hidden="true">
+          </a>
+          <a href="#services" class="hero-services">View Services</a>
+        </div>
+      </div>
+      <img class="hero-artwork" src="assets/img/hero/cafe-collage.png" width="645" height="642" alt="A smiling café owner holding two cups of coffee, with a latte and colourful geometric accents." fetchpriority="high">
+    </div>
+  </section>
+</div>
 
 <!-- Stats -->
 <section class="stats" style="padding-top: 0;">

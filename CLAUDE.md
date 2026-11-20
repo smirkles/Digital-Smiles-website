@@ -57,10 +57,11 @@ Pill-shaped elements (buttons, badges) use `border-radius: 100px`.
 
 | Token | Value | Usage |
 |---|---|---|
-| `--font-main` | `'Plus Jakarta Sans', sans-serif` | All body/heading text |
+| `--font-main` | `'Kedebideri', sans-serif` | Body and interface text |
+| `--font-heading` | `'Recoleta Alt', serif` | Headings |
 | `--font-hand` | `'Caveat', cursive` | Handwritten annotations, section labels |
 
-Fonts loaded from Google Fonts with `preconnect`.
+Kedebideri (400–900) and Caveat (400–700) load from Google Fonts with `preconnect`. Recoleta Alt Bold (700) is self-hosted. Font faces and family variables live in `assets/css/fonts.css`; the eight Figma text styles are available as lowercase classes in `assets/css/figma-typography.css`. Both stylesheets are linked in `index.html`.
 
 ## 2. Typography Scale
 

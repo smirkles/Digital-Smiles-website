@@ -1,0 +1,15 @@
+/* Kedebideri and Caveat are loaded through the Google Fonts link in index.html. */
+@font-face {
+  font-family: 'Recoleta Alt';
+  src: url('../fonts/Recoleta Alt Bold.woff2') format('woff2'),
+       url('../fonts/Recoleta Alt Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-main: 'Kedebideri', sans-serif;
+  --font-heading: 'Recoleta Alt', serif;
+  --font-hand: 'Caveat', cursive;
+}

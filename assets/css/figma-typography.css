@@ -1,0 +1,111 @@
+/*
+ * Digital Smiles Style Guide — text styles
+ * Source: https://www.figma.com/design/Sx1YlZ01yQzzEGhBywKTWw/Digital-Smiles-Style-Guide
+ * Class names are lowercase Figma style names with spaces replaced by hyphens.
+ * Figma AUTO line height maps to normal. Sizes retain the source pixel values.
+ * Example: <h2 class="heading-2-accented">A heading</h2>
+ */
+
+/* Figma: Heading 1 */
+.heading-1 {
+  font-family: var(--font-heading);
+  font-size: 80px;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 85px;
+  letter-spacing: 1px;
+  text-transform: none;
+  text-decoration: none;
+  text-indent: 0;
+}
+
+/* Figma: Body */
+.body {
+  font-family: var(--font-main);
+  font-size: 18px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1px;
+  text-transform: none;
+  text-decoration: none;
+  text-indent: 0;
+}
+
+/* Figma: Heading 1 Accented */
+.heading-1-accented {
+  font-family: var(--font-heading);
+  font-size: 80px;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 85px;
+  letter-spacing: 1px;
+  text-transform: none;
+  text-decoration: underline;
+  text-indent: 0;
+}
+
+/* Figma: Headings 3 */
+.headings-3 {
+  font-family: var(--font-main);
+  font-size: 20px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 30px;
+  letter-spacing: 0.8px;
+  text-transform: none;
+  text-decoration: none;
+  text-indent: 0;
+}
+
+/* Figma: Heading 2 */
+.heading-2 {
+  font-family: var(--font-heading);
+  font-size: 45px;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 85px;
+  letter-spacing: 1px;
+  text-transform: none;
+  text-decoration: none;
+  text-indent: 0;
+}
+
+/* Figma: Heading 2 Accented */
+.heading-2-accented {
+  font-family: var(--font-heading);
+  font-size: 40px;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 85px;
+  letter-spacing: 1px;
+  text-transform: none;
+  text-decoration: underline;
+  text-indent: 0;
+}
+
+/* Figma: Body Small */
+.body-small {
+  font-family: var(--font-main);
+  font-size: 15px;
+  font-weight: 600;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1px;
+  text-transform: none;
+  text-decoration: none;
+  text-indent: 0;
+}
+
+/* Figma: Body Small Uppercase */
+.body-small-uppercase {
+  font-family: var(--font-main);
+  font-size: 15px;
+  font-weight: 800;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-indent: 0;
+}

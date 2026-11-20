@@ -1,0 +1,57 @@
+/*
+ * Digital Smiles Style Guide — Branding Colours
+ * Source: https://www.figma.com/design/Sx1YlZ01yQzzEGhBywKTWw/Digital-Smiles-Style-Guide
+ * Names match the lowercase Figma variables, with group slashes replaced by hyphens.
+ * Usage: color: var(--primary-green-500);
+ */
+
+:root {
+  /* primary-green */
+  --primary-green-900: #002616;
+  --primary-green-800: #034328;
+  --primary-green-700: #0A6E43;
+  --primary-green-600: #1D9964;
+  --primary-green-500: #35B87F;
+  --primary-green-400: #62D9A5;
+  --primary-green-300: #97E8C5;
+  --primary-green-200: #C6F7E2;
+  --primary-green-100: #F2FFF9;
+
+  /* primary-pink */
+  --primary-pink-900: #260014;
+  --primary-pink-800: #73003B;
+  --primary-pink-700: #99225F;
+  --primary-pink-600: #B2256F;
+  --primary-pink-500: #D94090;
+  --primary-pink-400: #E069A7;
+  --primary-pink-300: #EB98C3;
+  --primary-pink-200: #F5CBE1;
+  --primary-pink-100: #FFF2F9;
+
+  /* primary-yellow */
+  --primary-yellow-900: #261F00;
+  --primary-yellow-800: #745D00;
+  --primary-yellow-700: #A68500;
+  --primary-yellow-600: #CCA305;
+  --primary-yellow-500: #FFCC06;
+  --primary-yellow-400: #FFDC52;
+  --primary-yellow-300: #FFE88D;
+  --primary-yellow-200: #FFF2BE;
+  --primary-yellow-100: #FFFCF2;
+
+  /* primary-purple */
+  --primary-purple-900: #070226;
+  --primary-purple-800: #190B73;
+  --primary-purple-700: #3221A5;
+  --primary-purple-600: #4B39C7;
+  --primary-purple-500: #6E5EE0;
+  --primary-purple-400: #8D81EB;
+  --primary-purple-300: #B1A5F2;
+  --primary-purple-200: #CDC6F7;
+  --primary-purple-100: #F4F2FF;
+
+  /* secondary */
+  --secondary-background: #FFF8ED;
+  --secondary-dark: #070226;
+  --secondary-white: #FFFFFF;
+}
