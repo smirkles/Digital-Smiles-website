@@ -206,15 +206,8 @@ section { padding: 80px 0; }
 
 .package-name {
   font-weight: 700; font-size: 1.1rem;
-  margin-bottom: 4px;
-}
-.package-price {
-  font-weight: 800; font-size: 1.4rem;
   margin-bottom: 14px;
 }
-.package:nth-child(1) .package-price { color: var(--accent-orange); }
-.package:nth-child(2) .package-price { color: var(--accent-green); }
-.package:nth-child(3) .package-price { color: var(--accent-purple); }
 
 .package-desc {
   font-size: 0.9rem; color: var(--text-muted);
@@ -574,6 +567,7 @@ footer {
   margin-bottom: 40px;
 }
 .footer-brand .logo { margin-bottom: 12px; }
+.footer-brand .logo img { display: block; max-width: 100%; height: auto; }
 .footer-brand p { font-size: 0.85rem; color: var(--text-muted); max-width: 240px; line-height: 1.6; }
 .footer-col h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 14px; }
 .footer-col a {
@@ -661,7 +655,7 @@ footer {
 
   <section class="hero" aria-labelledby="hero-heading">
     <div class="hero-layout">
-      <img class="hero-spark" src="assets/img/hero/spark.png" width="86" height="86" alt="" aria-hidden="true">
+      <img class="hero-spark" src="assets/img/hero/spark.svg" width="86" height="86" alt="" aria-hidden="true">
       <div class="hero-copy">
         <div class="hero-heading-group">
           <p class="hero-eyebrow body-small-uppercase">Business workflow engineering</p>
@@ -676,7 +670,7 @@ footer {
           <a href="#services" class="hero-services">View Services</a>
         </div>
       </div>
-      <img class="hero-artwork" src="assets/img/hero/cafe-collage.png" width="645" height="642" alt="A smiling café owner holding two cups of coffee, with a latte and colourful geometric accents." fetchpriority="high">
+      <img class="hero-artwork" src="assets/img/hero/cafe-collage.svg" width="645" height="642" alt="A smiling café owner holding two cups of coffee, with a latte and colourful geometric accents." fetchpriority="high">
     </div>
   </section>
 </div>
@@ -720,7 +714,6 @@ footer {
         <div class="package-annotation">Start here! ↓</div>
         <div class="package-icon">⚡</div>
         <div class="package-name">Automation Audit + Quick Win</div>
-        <div class="package-price">$500–$800</div>
         <p class="package-desc">A focused session to uncover your team's biggest operational bottlenecks—plus one quick-win automation built and running before we're done.</p>
         <ul class="package-features">
           <li>30-minute discovery call to map your current processes</li>
@@ -735,7 +728,6 @@ footer {
         <div class="package-popular">Most Popular</div>
         <div class="package-icon">🔧</div>
         <div class="package-name">Done-for-You Workflow Build</div>
-        <div class="package-price">$1,500–$3,000</div>
         <p class="package-desc">You describe the bottleneck, I engineer the solution. One core business process fully automated, tested, documented, and handed over to your team.</p>
         <ul class="package-features">
           <li>End-to-end workflow build (Make.com, Airtable, AI tools & many more)</li>
@@ -749,7 +741,6 @@ footer {
       <div class="package">
         <div class="package-icon">🧠</div>
         <div class="package-name">Fractional Automation Partner</div>
-        <div class="package-price">Starting at $1,000/mo</div>
         <p class="package-desc">Treat me as your outsourced operations engineer. I'll keep your systems running flawlessly, optimize what's working, and build new infrastructure as your company scales.</p>
         <ul class="package-features">
           <li>Monthly system health checks & performance monitoring</li>
@@ -929,7 +920,7 @@ footer {
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="logo">
-          <img src="assets/img/digital-smiles-website-logo.png" alt="Digital Smiles" style="height: 70px; width: auto;">
+          <img src="assets/img/hero/digital-smiles-logo.svg" width="226" height="39" alt="Digital Smiles">
         </div>
         <p>AI automation consulting for small businesses. Save time, reduce errors, scale smarter.</p>
       </div>

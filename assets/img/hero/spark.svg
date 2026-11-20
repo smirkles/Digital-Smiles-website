@@ -1,0 +1,14 @@
+<svg width="86" height="86" viewBox="0 0 86 86" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="86" height="86" fill="#F5F5F5"/>
+<g id="Home Page V3">
+<rect width="1920" height="2917" transform="translate(-217 -141)" fill="#FFF8ED"/>
+<g id="Spark" clip-path="url(#clip0_0_1)">
+<path id="Vector" d="M43 0C43 28.6667 57.3333 43 86 43C57.3333 43 43 57.3333 43 86C43 57.3333 28.6667 43 0 43C28.6667 43 43 28.6667 43 0Z" fill="#FFCC06"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_0_1">
+<rect width="86" height="86" fill="white"/>
+</clipPath>
+</defs>
+</svg>
