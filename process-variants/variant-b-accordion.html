@@ -1,0 +1,76 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Variant B — Accordion</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Recoleta Alt';src:url('../assets/fonts/Recoleta Alt Bold.woff2') format('woff2'),url('../assets/fonts/Recoleta Alt Bold.otf') format('opentype');font-weight:700;font-display:swap;}
+h1,h2,h3{font-family:'Recoleta Alt',serif;font-weight:700;}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#FDF6EE; --bg-white:#FFFFFF; --bg-dark:#1A1A2E; --bg-dark-card:#242440;
+  --text:#1A1A2E; --text-muted:#6B6B80; --text-light:#F0EDE8;
+  --accent-yellow:#FFD23F; --accent-yellow-light:#FFF3CD;
+  --accent-green:#6BCB77; --accent-green-light:#E8F8EA;
+  --accent-purple:#9B8FE8; --accent-purple-light:#EEEAFF;
+  --accent-orange:#FF8C42; --accent-orange-light:#FFF0E5;
+  --accent-pink:#FF6B8A; --accent-pink-light:#FFE3EA;
+  --border:rgba(0,0,0,0.06); --border-light:rgba(255,255,255,0.1);
+  --shadow-sm:0 2px 8px rgba(0,0,0,0.04); --shadow-md:0 8px 30px rgba(0,0,0,0.06); --shadow-lg:0 16px 50px rgba(0,0,0,0.08);
+  --radius:16px; --radius-lg:24px;
+  --font-main:'Plus Jakarta Sans',sans-serif; --font-hand:'Caveat',cursive;
+}
+body{font-family:var(--font-main);background:var(--bg);color:var(--text);line-height:1.6;font-size:1.125rem;letter-spacing:.005em;-webkit-font-smoothing:antialiased;}
+.container{max-width:1300px;margin:0 auto;padding:0 24px;}
+section{padding:72px 0;}
+.section-label{display:inline-block;font-family:var(--font-hand);font-size:1.15rem;font-weight:600;color:var(--accent-purple);background:var(--accent-purple-light);padding:2px 14px;border-radius:6px;margin-bottom:10px;}
+.section-title{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;letter-spacing:-.02em;margin-bottom:14px;line-height:1.15;}
+.section-subtitle{font-size:1rem;color:var(--text-muted);max-width:580px;margin-bottom:48px;}
+.section-center{text-align:center;}
+.section-center .section-subtitle{margin-left:auto;margin-right:auto;}
+
+
+.acc{max-width:840px;margin:8px auto 0;text-align:left;}
+.acc-item{background:var(--bg-white);border:1.5px solid var(--border);border-radius:var(--radius);margin-bottom:14px;overflow:hidden;transition:box-shadow .3s,border-color .3s;}
+.acc-item[open]{box-shadow:var(--shadow-md);}
+.acc-item summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:18px;padding:22px 26px;}
+.acc-item summary::-webkit-details-marker{display:none;}
+.acc-num{flex-shrink:0;width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.15rem;color:#fff;}
+.acc-item:nth-child(1) .acc-num{background:var(--accent-yellow);color:var(--text);}
+.acc-item:nth-child(2) .acc-num{background:var(--accent-green);}
+.acc-item:nth-child(3) .acc-num{background:var(--accent-purple);}
+.acc-htext{flex:1;}
+.acc-name{font-weight:800;font-size:1.12rem;line-height:1.2;}
+.acc-teaser{font-size:.9rem;color:var(--text-muted);}
+.acc-item summary::after{content:'+';font-size:1.6rem;font-weight:400;color:var(--accent-purple);flex-shrink:0;line-height:1;}
+.acc-item[open] summary::after{content:'\2013';}
+.acc-body{padding:0 26px 24px 90px;}
+.acc-body>p{font-size:.94rem;color:var(--text-muted);line-height:1.6;margin-bottom:18px;}
+.acc-meta{display:flex;gap:32px;flex-wrap:wrap;}
+.acc-meta>div{flex:1;min-width:200px;}
+.acc-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--accent-purple);margin-bottom:4px;}
+.acc-val{font-size:.9rem;color:var(--text);line-height:1.5;}
+
+</style></head><body>
+<section><div class="container section-center">
+
+    <div class="section-label">Process</div>
+    <h2 class="section-title">How I build your revenue infrastructure</h2>
+    <div class="section-subtitle">Instead of off-the-shelf packages, a three-phase process that solves the right problems at the right depth.</div>
+
+
+    <div class="acc">
+      <details class="acc-item" open><summary><span class="acc-num">1</span><span class="acc-htext"><span class="acc-name">The Systems Diagnostic</span><span class="acc-teaser"> · Where are we leaking?</span></span></summary>
+        <div class="acc-body"><p>A 45-minute deep-dive that maps your current stack — where data breaks, where leads fall through the cracks, and where manual work is slowing you down.</p>
+        <div class="acc-meta"><div><div class="acc-label">The Deliverable</div><div class="acc-val">A written Revenue Systems Roadmap: 3–5 high-impact fixes, each with a projected ROI.</div></div><div><div class="acc-label">The Goal</div><div class="acc-val">Decide whether you need a quick fix or a structural rebuild.</div></div></div></div></details>
+      <details class="acc-item"><summary><span class="acc-num">2</span><span class="acc-htext"><span class="acc-name">Systems Implementation Sprint</span><span class="acc-teaser"> · Build</span></span></summary>
+        <div class="acc-body"><p>You name the bottleneck; I engineer the fix — building, testing, and documenting the entire pipeline so your team can own it.</p>
+        <div class="acc-meta"><div><div class="acc-label">The Deliverable</div><div class="acc-val">A fully built, tested, documented process integrated across your stack.</div></div><div><div class="acc-label">The Goal</div><div class="acc-val">A reliable core process that scales — plus 2 weeks of post-launch support.</div></div></div></div></details>
+      <details class="acc-item"><summary><span class="acc-num">3</span><span class="acc-htext"><span class="acc-name">Revenue Systems Ownership</span><span class="acc-teaser"> · Scale</span></span></summary>
+        <div class="acc-body"><p>Your fractional Systems Engineer — ongoing monitoring, troubleshooting, and continuous optimisation, without the full-time headcount cost.</p>
+        <div class="acc-meta"><div><div class="acc-label">The Deliverable</div><div class="acc-val">Continuous maintenance, priority troubleshooting, and dedicated build hours.</div></div><div><div class="acc-label">The Goal</div><div class="acc-val">Keep your engine at peak performance while you focus on the business.</div></div></div></div></details>
+    </div>
+
+</div></section>
+</body></html>

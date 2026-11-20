@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Smiles — Component Gallery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #FDF6EE;
+  --bg-white: #FFFFFF;
+  --bg-dark: #1A1A2E;
+  --bg-dark-card: #242440;
+  --text: #1A1A2E;
+  --text-muted: #6B6B80;
+  --text-light: #F0EDE8;
+  --accent-yellow: #FFD23F;
+  --accent-yellow-light: #FFF3CD;
+  --accent-green: #6BCB77;
+  --accent-green-light: #E8F8EA;
+  --accent-purple: #9B8FE8;
+  --accent-purple-light: #EEEAFF;
+  --accent-orange: #FF8C42;
+  --accent-orange-light: #FFF0E5;
+  --accent-pink: #FF6B8A;
+  --border: rgba(0,0,0,0.06);
+  --border-light: rgba(255,255,255,0.1);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+  --shadow-md: 0 8px 30px rgba(0,0,0,0.06);
+  --shadow-lg: 0 16px 50px rgba(0,0,0,0.08);
+  --radius: 16px;
+  --radius-lg: 24px;
+  --font-main: 'Plus Jakarta Sans', sans-serif;
+  --font-hand: 'Caveat', cursive;
+}
+
+body { font-family: var(--font-main); background: #E8E8E8; color: var(--text); line-height: 1.6; padding: 48px; }
+
+/* ── Gallery layout ── */
+.gallery-section { margin-bottom: 64px; }
+.gallery-section-title {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: #999; margin-bottom: 24px;
+  padding-bottom: 8px; border-bottom: 1px solid #ddd;
+}
+.gallery-row {
+  display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start;
+}
+.gallery-item {
+  display: flex; flex-direction: column; gap: 8px;
+}
+.gallery-label {
+  font-size: 0.65rem; font-weight: 600; color: #aaa;
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+.canvas {
+  background: var(--bg);
+  padding: 32px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+}
+.canvas-dark { background: var(--bg-dark); }
+.canvas-white { background: var(--bg-white); }
+
+/* ── Logo ── */
+.logo {
+  font-weight: 800; font-size: 1.25rem;
+  letter-spacing: -0.03em; color: var(--text);
+  display: flex; align-items: center; gap: 8px;
+  text-decoration: none;
+}
+.logo-icon {
+  width: 32px; height: 32px; border-radius: 10px;
+  background: var(--accent-yellow);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+}
+
+/* ── Buttons ── */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 32px;
+  background: var(--accent-yellow);
+  color: var(--text);
+  font-weight: 700; font-size: 0.95rem;
+  text-decoration: none;
+  border-radius: 100px;
+  box-shadow: 0 4px 16px rgba(255,210,63,0.3);
+  font-family: var(--font-main);
+  cursor: pointer; border: none;
+}
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 32px;
+  background: var(--bg-white);
+  color: var(--text);
+  font-weight: 600; font-size: 0.95rem;
+  text-decoration: none;
+  border-radius: 100px;
+  border: 1.5px solid var(--border);
+  font-family: var(--font-main);
+  cursor: pointer;
+}
+.nav-cta {
+  background: var(--text); color: #fff;
+  padding: 10px 22px; border-radius: 100px;
+  font-weight: 600; font-size: 0.85rem;
+  font-family: var(--font-main);
+  cursor: pointer; border: none;
+  text-decoration: none; display: inline-block;
+}
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 40px;
+  background: var(--accent-yellow);
+  color: var(--text);
+  font-weight: 700; font-size: 1rem;
+  text-decoration: none;
+  border-radius: 100px;
+  box-shadow: 0 4px 24px rgba(255,210,63,0.3);
+  font-family: var(--font-main);
+  cursor: pointer; border: none;
+}
+
+/* ── Badges ── */
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 16px 6px 8px;
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-size: 0.82rem; font-weight: 600;
+  color: var(--text-muted);
+  box-shadow: var(--shadow-sm);
+}
+.hero-badge-dot {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--accent-green);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem; color: #fff;
+}
+.section-label {
+  display: inline-block;
+  font-family: var(--font-hand);
+  font-size: 1.15rem; font-weight: 600;
+  color: var(--accent-purple);
+  background: var(--accent-purple-light);
+  padding: 2px 14px; border-radius: 6px;
+}
+.badge-popular {
+  display: inline-block;
+  background: var(--accent-green);
+  color: #fff;
+  font-size: 0.72rem; font-weight: 700;
+  padding: 4px 14px; border-radius: 100px;
+  text-transform: uppercase; letter-spacing: 0.04em;
+}
+.badge-draft {
+  display: inline-block;
+  padding: 4px 12px;
+  font-size: 0.7rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  border-radius: 6px;
+  background: var(--accent-purple-light);
+  color: var(--accent-purple);
+}
+
+/* ── Annotation ── */
+.annotation {
+  font-family: var(--font-hand);
+  font-size: 1.2rem;
+  color: var(--accent-purple);
+  transform: rotate(-6deg);
+  display: inline-block;
+}
+.annotation-yellow { color: var(--accent-yellow); transform: rotate(3deg); }
+.annotation-green { color: var(--accent-green); transform: rotate(-3deg); }
+.annotation-orange { color: var(--accent-orange); transform: rotate(4deg); }
+
+/* ── Nav ── */
+.nav-preview {
+  background: rgba(253,246,238,0.95);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 32px;
+  display: flex; justify-content: space-between; align-items: center;
+  width: 860px; border-radius: 12px;
+}
+.nav-preview ul { display: flex; gap: 28px; list-style: none; }
+.nav-preview a {
+  color: var(--text-muted); text-decoration: none;
+  font-size: 0.9rem; font-weight: 500;
+}
+
+/* ── Stats ── */
+.stats-inner {
+  background: var(--bg-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  padding: 36px 48px;
+  box-shadow: var(--shadow-md);
+  width: 700px;
+}
+.stats-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 24px; text-align: center;
+}
+.stat { position: relative; }
+.stat:not(:last-child)::after {
+  content: ''; position: absolute; right: 0; top: 15%; height: 70%;
+  width: 1px; background: var(--border);
+}
+.stat-number { font-size: 2rem; font-weight: 800; letter-spacing: -0.02em; }
+.stat-label { font-size: 0.82rem; color: var(--text-muted); margin-top: 2px; font-weight: 500; }
+
+/* ── Package Cards ── */
+.package {
+  background: var(--bg-white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px 26px;
+  position: relative;
+  width: 260px;
+}
+.package-icon {
+  width: 52px; height: 52px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; margin-bottom: 18px;
+}
+.package-name { font-weight: 700; font-size: 1.1rem; margin-bottom: 4px; }
+.package-price { font-weight: 800; font-size: 1.4rem; margin-bottom: 14px; }
+.package-desc { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 18px; line-height: 1.6; }
+.package-features { list-style: none; }
+.package-features li {
+  font-size: 0.85rem; color: var(--text-muted);
+  padding: 5px 0 5px 24px; position: relative;
+}
+.package-features li::before {
+  content: '✓'; position: absolute; left: 0;
+  font-weight: 700; font-size: 0.85rem;
+}
+.p1 .package-icon { background: var(--accent-yellow-light); }
+.p1 .package-price { color: var(--accent-orange); }
+.p1 .package-features li::before { color: var(--accent-orange); }
+.p2 .package-icon { background: var(--accent-green-light); }
+.p2 .package-price { color: var(--accent-green); }
+.p2 .package-features li::before { color: var(--accent-green); }
+.p3 .package-icon { background: var(--accent-purple-light); }
+.p3 .package-price { color: var(--accent-purple); }
+.p3 .package-features li::before { color: var(--accent-purple); }
+.package-annotation {
+  position: absolute; top: -18px; right: 20px;
+  font-family: var(--font-hand); font-size: 1.1rem;
+  color: var(--accent-orange); transform: rotate(4deg);
+}
+.package-popular {
+  position: absolute; top: -12px; right: 16px;
+  background: var(--accent-green); color: #fff;
+  font-size: 0.72rem; font-weight: 700;
+  padding: 4px 14px; border-radius: 100px;
+  text-transform: uppercase; letter-spacing: 0.04em;
+}
+
+/* ── Steps ── */
+.step {
+  text-align: center; padding: 28px 20px;
+  border-radius: var(--radius-lg);
+  width: 220px;
+}
+.step-num-wrap {
+  width: 56px; height: 56px; border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 16px;
+  font-weight: 800; font-size: 1.3rem; color: #fff;
+}
+.s1 .step-num-wrap { background: var(--accent-yellow); color: var(--text); }
+.s2 .step-num-wrap { background: var(--accent-green); }
+.s3 .step-num-wrap { background: var(--accent-purple); }
+.step h3 { font-weight: 700; font-size: 1.05rem; margin-bottom: 8px; }
+.step p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+
+/* ── Tool pill ── */
+.tool-text {
+  padding: 12px 24px;
+  background: var(--bg-white);
+  border: 1.5px solid var(--border);
+  border-radius: 100px;
+  font-size: 0.88rem; font-weight: 600;
+  color: var(--text);
+}
+
+/* ── Testimonial ── */
+.proof-card {
+  background: var(--bg-white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  width: 280px;
+}
+.proof-stars { font-size: 1.1rem; margin-bottom: 14px; color: var(--accent-yellow); letter-spacing: 2px; }
+.proof-title { font-weight: 700; font-size: 1rem; margin-bottom: 10px; }
+.proof-quote { font-size: 0.88rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 18px; }
+.proof-author { display: flex; align-items: center; gap: 12px; }
+.proof-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.85rem; color: #fff;
+}
+.t1 .proof-avatar { background: var(--accent-orange); }
+.t2 .proof-avatar { background: var(--accent-purple); }
+.t3 .proof-avatar { background: var(--accent-green); }
+.proof-name { font-weight: 600; font-size: 0.85rem; }
+.proof-role { font-size: 0.78rem; color: var(--text-muted); }
+
+/* ── CTA Section ── */
+.cta-section {
+  background: var(--bg-dark);
+  border-radius: var(--radius-lg);
+  padding: 80px 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  width: 700px;
+}
+.cta-section::before {
+  content: ''; position: absolute; top: -50%; left: -20%;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(255,210,63,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta-section::after {
+  content: ''; position: absolute; bottom: -40%; right: -15%;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(155,143,232,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta-section .section-label {
+  background: rgba(155,143,232,0.2);
+  color: var(--accent-purple);
+  position: relative; z-index: 2; margin-bottom: 16px;
+}
+.cta-section .section-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 800;
+  letter-spacing: -0.02em; line-height: 1.15;
+  color: var(--text-light);
+  max-width: 500px; margin: 0 auto 14px;
+  position: relative; z-index: 2;
+}
+.cta-section .section-subtitle {
+  font-size: 1rem; color: #9090A8;
+  max-width: 440px; margin: 0 auto 36px;
+  position: relative; z-index: 2;
+}
+.cta-annotation {
+  font-family: var(--font-hand); font-size: 1.2rem;
+  color: var(--accent-yellow); margin-top: 20px;
+  position: relative; z-index: 2;
+}
+
+/* ── Footer ── */
+.footer-preview {
+  background: var(--bg);
+  padding: 48px;
+  border-top: 1px solid var(--border);
+  width: 900px;
+  border-radius: 12px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+  gap: 40px; margin-bottom: 40px;
+}
+.footer-brand p { font-size: 0.85rem; color: var(--text-muted); max-width: 240px; line-height: 1.6; margin-top: 8px; }
+.footer-col h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 14px; }
+.footer-col a {
+  display: block; font-size: 0.85rem; color: var(--text-muted);
+  text-decoration: none; padding: 4px 0;
+}
+.footer-subscribe p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px; line-height: 1.5; }
+.footer-subscribe h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 8px; }
+.footer-email-row { display: flex; gap: 8px; }
+.footer-email-row input {
+  flex: 1; padding: 10px 16px;
+  border: 1.5px solid var(--border); border-radius: 100px;
+  font-family: var(--font-main); font-size: 0.85rem;
+  background: var(--bg-white); outline: none;
+}
+.footer-email-row button {
+  padding: 10px 20px; background: var(--accent-yellow);
+  color: var(--text); font-weight: 700; font-size: 0.82rem;
+  border: none; border-radius: 100px; cursor: pointer;
+  font-family: var(--font-main);
+}
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 24px; border-top: 1px solid var(--border);
+  font-size: 0.8rem; color: var(--text-muted);
+}
+.footer-socials { display: flex; gap: 16px; }
+.footer-socials a { color: var(--text-muted); text-decoration: none; font-size: 1.1rem; }
+
+/* ── Hero highlight ── */
+.hero-h1 {
+  font-size: clamp(2.6rem, 5.5vw, 4rem); font-weight: 800;
+  line-height: 1.1; letter-spacing: -0.03em;
+  max-width: 600px; text-align: center;
+}
+.highlight { position: relative; display: inline-block; }
+.highlight::after {
+  content: ''; position: absolute; bottom: 2px; left: -4px; right: -4px;
+  height: 14px; background: var(--accent-yellow);
+  border-radius: 4px; z-index: -1; opacity: 0.5;
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- SECTION: LOGO & BRAND -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="gallery-section">
+  <div class="gallery-section-title">Logo & Brand</div>
+  <div class="gallery-row">
+    <div class="gallery-item">
+      <div class="gallery-label">Logo / Default</div>
+      <div class="canvas canvas-white" style="padding: 24px 32px;">
+        <a class="logo">
+          <div class="logo-icon">⚡</div>
+          digitalsmiles
+        </a>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-label">Logo / On Dark</div>
+      <div class="canvas canvas-dark" style="padding: 24px 32px;">
+        <a class="logo" style="color: var(--text-light);">
+          <div class="logo-icon">⚡</div>
+          digitalsmiles
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- SECTION: BUTTONS -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="gallery-section">
+  <div class="gallery-section-title">Buttons</div>
+  <div class="gallery-row">
+    <div class="gallery-item">
+      <div class="gallery-label">Button / Primary</div>
+      <div class="canvas">
+        <button class="btn-primary">
+          Book a Free Audit
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-label">Button / Secondary</div>
+      <div class="canvas">
+        <button class="btn-secondary">View Services</button>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-label">Button / Nav CTA</div>
+      <div class="canvas">
+        <a class="nav-cta">Book a Free Audit</a>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-label">Button / CTA Large</div>
+      <div class="canvas canvas-dark">
+        <button class="cta-btn">
+          Book Your Free Audit
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- SECTION: BADGES & LABELS -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="gallery-section">
+  <div class="gallery-section-title">Badges & Labels</div>
+  <div class="gallery-row">
+    <div class="gallery-item">
+      <div class="gallery-label">Badge / Hero</div>
+      <div class="canvas">
+        <div class="hero-badge">
+          <span class="hero-badge-dot">✓</span>
+          $50K+ delivered on Upwork · 5-Star Reviews
+        </div>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-label">Badge / Section Label</div>
+      <div class="canvas">
+        <div class="section-label">Services</div>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-label">Badge / Popular</div>
+      <div class="canvas">
+        <div class="badge-popular">Most Popular</div>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-label">Badge / Draft</div>
+      <div class="canvas">
+        <div class="badge-draft">⟡ Packaging in progress</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- SECTION: ANNOTATIONS -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="gallery-section">
+  <div class="gallery-section-title">Annotations (Handwritten)</div>
+  <div class="gallery-row">
+    <div class="gallery-item">
+      <div class="gallery-label">Annotation / Purple</div>
+      <div class="canvas" style="min-width:160px; min-height: 60px;">
+        <span class="annotation">Your new secret weapon!</span>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-label">Annotation / Orange</div>
+      <div class="canvas" style="min-width:140px;">
+        <span class="annotation annotation-orange">Start here! ↓</span>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-label">Annotation / Yellow</div>
+      <div class="canvas canvas-dark" style="min-width:200px;">
+        <span class="annotation annotation-yellow">No commitment, just a friendly chat ↑</span>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-label">Annotation / Green</div>
+      <div class="canvas" style="min-width:220px;">
+        <span class="annotation annotation-green">→ And many more — if it has an API, I can connect it</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- SECTION: NAVIGATION -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="gallery-section">
+  <div class="gallery-section-title">Navigation</div>
+  <div class="gallery-row">
+    <div class="gallery-item">
+      <div class="gallery-label">Nav / Desktop</div>
+      <div style="padding: 0;">
+        <nav class="nav-preview">
+          <a class="logo">
+            <div class="logo-icon">⚡</div>
+            digitalsmiles
+          </a>
+          <ul>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">How It Works</a></li>
+            <li><a href="#">Integrations</a></li>
+            <li><a href="#">Testimonials</a></li>
+            <li><a class="nav-cta" href="#">Book a Free Audit</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- SECTION: HERO ELEMENTS -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="gallery-section">
+  <div class="gallery-section-title">Hero</div>
+  <div class="gallery-row">
+    <div class="gallery-item">
+      <div class="gallery-label">Hero / H1 with Highlight</div>
+      <div class="canvas" style="padding: 40px 48px;">
+        <h1 class="hero-h1">
+          Stop doing manually<br>what <span class="highlight">AI can do in seconds</span>
+        </h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- SECTION: STATS PANEL -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="gallery-section">
+  <div class="gallery-section-title">Stats Panel</div>
+  <div class="gallery-row">
+    <div class="gallery-item">
+      <div class="gallery-label">Stats / 4-Column Panel</div>
+      <div class="canvas" style="padding: 0; background: transparent;">
+        <div class="stats-inner">
+          <div class="stats-grid">
+            <div class="stat">
+              <div class="stat-number">$50K+</div>
+              <div class="stat-label">Delivered on Upwork</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">10+</div>
+              <div class="stat-label">Hours/Week Saved Per Client</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">100%</div>
+              <div class="stat-label">Job Success Rate</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">🇦🇺</div>
+              <div class="stat-label">Melbourne, Australia</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- SECTION: PACKAGE CARDS -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="gallery-section">
+  <div class="gallery-section-title">Package Cards</div>
+  <div class="gallery-row" style="align-items: flex-start; padding-top: 24px;">
+
+    <div class="gallery-item">
+      <div class="gallery-label">Package / 1 — Yellow (Audit)</div>
+      <div class="canvas" style="padding: 32px; padding-top: 48px; background: transparent;">
+        <div class="package p1">
+          <div class="package-annotation">Start here! ↓</div>
+          <div class="package-icon">⚡</div>
+          <div class="package-name">AI Automation Audit</div>
+          <div class="package-price">$500–$800</div>
+          <p class="package-desc">A focused session to uncover where AI can save you the most time.</p>
+          <ul class="package-features">
+            <li>30-minute discovery call</li>
+            <li>Written report: 3–5 automation opportunities</li>
+            <li>One quick-win implementation included</li>
+            <li>ROI estimate for each opportunity</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <div class="gallery-label">Package / 2 — Green (Workflow)</div>
+      <div class="canvas" style="padding: 32px; padding-top: 48px; background: transparent;">
+        <div class="package p2">
+          <div class="package-popular">Most Popular</div>
+          <div class="package-icon">🔧</div>
+          <div class="package-name">Done-for-You AI Workflow</div>
+          <div class="package-price">$1,500–$3,000</div>
+          <p class="package-desc">I build your complete automation stack end-to-end.</p>
+          <ul class="package-features">
+            <li>Full Make.com + Airtable + AI integration</li>
+            <li>Lead qualification, content repurposing & more</li>
+            <li>Complete documentation & handover guide</li>
+            <li>2 weeks post-launch support</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <div class="gallery-label">Package / 3 — Purple (MCP)</div>
+      <div class="canvas" style="padding: 32px; background: transparent;">
+        <div class="package p3">
+          <div class="package-icon">🧠</div>
+          <div class="package-name">MCP Integration Specialist</div>
+          <div class="package-price">$2,000–$5,000</div>
+          <p class="package-desc">Connect your existing tools to AI agents via MCP.</p>
+          <ul class="package-features">
+            <li>MCP server setup & configuration</li>
+            <li>Connect existing tools to AI agents</li>
+            <li>Custom integration architecture</li>
+            <li>Ongoing optimisation available</li>
+          </ul>
+          <div class="badge-draft" style="margin-top: 14px;">⟡ Packaging in progress — enquire for details</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- SECTION: STEP CARDS -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="gallery-section">
+  <div class="gallery-section-title">Step Cards (How It Works)</div>
+  <div class="gallery-row">
+    <div class="gallery-item">
+      <div class="gallery-label">Step / 1 — Yellow</div>
+      <div class="canvas canvas-white">
+        <div class="step s1">
+          <div class="step-num-wrap">1</div>
+          <h3>Free 15-Minute Audit</h3>
+          <p>We jump on a quick call. You tell me what's eating your time. I tell you exactly what I'd automate.</p>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-label">Step / 2 — Green</div>
+      <div class="canvas canvas-white">
+        <div class="step s2">
+          <div class="step-num-wrap">2</div>
+          <h3>Build & Test</h3>
+          <p>I build your automation workflow, test it thoroughly, and document everything so you understand how it works.</p>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-label">Step / 3 — Purple</div>
+      <div class="canvas canvas-white">
+        <div class="step s3">
+          <div class="step-num-wrap">3</div>
+          <h3>Launch & Support</h3>
+          <p>We go live. I stick around for two weeks to make sure everything runs smoothly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- SECTION: TOOL PILLS -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="gallery-section">
+  <div class="gallery-section-title">Tool Pills</div>
+  <div class="gallery-row" style="align-items: center;">
+    <div class="gallery-item">
+      <div class="gallery-label">Tool Pills / Set</div>
+      <div class="canvas" style="gap: 12px; flex-wrap: wrap; max-width: 600px; justify-content: flex-start; padding: 28px 32px;">
+        <span class="tool-text">Make.com</span>
+        <span class="tool-text">Claude API</span>
+        <span class="tool-text">Airtable</span>
+        <span class="tool-text">Notion</span>
+        <span class="tool-text">Zapier</span>
+        <span class="tool-text">Google Sheets</span>
+        <span class="tool-text">MCP</span>
+        <span class="tool-text">OpenAI</span>
+        <span class="tool-text">Webhooks</span>
+        <span class="tool-text">Slack</span>
+        <span class="tool-text">Gmail</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- SECTION: TESTIMONIAL CARDS -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="gallery-section">
+  <div class="gallery-section-title">Testimonial Cards</div>
+  <div class="gallery-row">
+    <div class="gallery-item">
+      <div class="gallery-label">Testimonial / 1 — Orange Avatar</div>
+      <div class="canvas" style="padding: 0; background: transparent;">
+        <div class="proof-card t1">
+          <div class="proof-stars">★★★★★</div>
+          <div class="proof-title">Game-changing automation</div>
+          <p class="proof-quote">"Add a quote from a past Upwork client about the quality of your automation work and how much time it saved them."</p>
+          <div class="proof-author">
+            <div class="proof-avatar">C</div>
+            <div>
+              <div class="proof-name">Client Name</div>
+              <div class="proof-role">Industry / Role</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-label">Testimonial / 2 — Purple Avatar</div>
+      <div class="canvas" style="padding: 0; background: transparent;">
+        <div class="proof-card t2">
+          <div class="proof-stars">★★★★★</div>
+          <div class="proof-title">Saved us 12 hours a week</div>
+          <p class="proof-quote">"Pull your best review from Upwork and add it here. Specifics about hours saved or processes automated work best."</p>
+          <div class="proof-author">
+            <div class="proof-avatar">J</div>
+            <div>
+              <div class="proof-name">Client Name</div>
+              <div class="proof-role">Industry / Role</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-label">Testimonial / 3 — Green Avatar</div>
+      <div class="canvas" style="padding: 0; background: transparent;">
+        <div class="proof-card t3">
+          <div class="proof-stars">★★★★★</div>
+          <div class="proof-title">Highly recommended</div>
+          <p class="proof-quote">"A third testimonial slot — three looks more complete than two. Even a short Upwork review works great here."</p>
+          <div class="proof-author">
+            <div class="proof-avatar">A</div>
+            <div>
+              <div class="proof-name">Client Name</div>
+              <div class="proof-role">Industry / Role</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- SECTION: CTA SECTION -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="gallery-section">
+  <div class="gallery-section-title">CTA Section (Dark)</div>
+  <div class="gallery-row">
+    <div class="gallery-item">
+      <div class="gallery-label">CTA / Dark Section</div>
+      <div style="padding: 0;">
+        <div class="cta-section">
+          <div class="section-label">Get Started</div>
+          <div class="cta-section-spacer" style="height:16px;"></div>
+          <div class="cta-section section-title" style="background:none; padding:0; margin:0; border-radius:0; width:auto; overflow:visible; position:relative;">
+            <div style="font-size:clamp(1.8rem,3.5vw,2.5rem); font-weight:800; letter-spacing:-0.02em; line-height:1.15; color:var(--text-light); max-width:500px; margin:0 auto 14px; position:relative; z-index:2;">Let's find your biggest automation win</div>
+            <div style="font-size:1rem; color:#9090A8; max-width:440px; margin:0 auto 36px; position:relative; z-index:2;">Book a free 15-minute audit. No pitch, no pressure — just a quick look at where AI could save you serious time.</div>
+            <button class="cta-btn" style="position:relative; z-index:2;">
+              Book Your Free Audit
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+            <div class="cta-annotation">No commitment, just a friendly chat ↑</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- SECTION: FOOTER -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="gallery-section">
+  <div class="gallery-section-title">Footer</div>
+  <div class="gallery-row">
+    <div class="gallery-item">
+      <div class="gallery-label">Footer / Full</div>
+      <div style="padding:0;">
+        <div class="footer-preview">
+          <div class="footer-grid">
+            <div class="footer-brand">
+              <a class="logo">
+                <div class="logo-icon">⚡</div>
+                digitalsmiles
+              </a>
+              <p>AI automation consulting for small businesses. Save time, reduce errors, scale smarter.</p>
+            </div>
+            <div class="footer-col">
+              <h4>Quick Links</h4>
+              <a href="#">Services</a>
+              <a href="#">How It Works</a>
+              <a href="#">Integrations</a>
+              <a href="#">Testimonials</a>
+            </div>
+            <div class="footer-col">
+              <h4>Connect</h4>
+              <a href="#">Upwork Profile</a>
+              <a href="#">LinkedIn</a>
+              <a href="#">Email</a>
+            </div>
+            <div class="footer-subscribe">
+              <h4>Stay updated with automation tips!</h4>
+              <p>Short, useful emails about AI automation — no spam, ever.</p>
+              <div class="footer-email-row">
+                <input type="email" placeholder="Enter your email">
+                <button>Subscribe</button>
+              </div>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <span>&copy; 2026 Digital Smiles. All rights reserved.</span>
+            <div class="footer-socials">
+              <a href="#">in</a>
+              <a href="#">Up</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

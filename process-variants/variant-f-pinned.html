@@ -1,0 +1,237 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Variant F — Pinned scroll panel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Recoleta Alt';src:url('../assets/fonts/Recoleta Alt Bold.woff2') format('woff2'),url('../assets/fonts/Recoleta Alt Bold.otf') format('opentype');font-weight:700;font-display:swap;}
+h1,h2,h3{font-family:'Recoleta Alt',serif;font-weight:700;}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#FDF6EE; --bg-white:#FFFFFF; --bg-dark:#1A1A2E;
+  --text:#1A1A2E; --text-muted:#6B6B80; --text-light:#F0EDE8;
+  --accent-yellow:#FFD23F; --accent-yellow-light:#FFF3CD;
+  --accent-green:#6BCB77; --accent-green-light:#E8F8EA;
+  --accent-purple:#9B8FE8; --accent-purple-light:#EEEAFF;
+  --accent-orange:#FF8C42; --accent-orange-light:#FFF0E5;
+  --accent-pink:#FF6B8A; --accent-pink-light:#FFE3EA;
+  --border:rgba(0,0,0,0.06);
+  --shadow-sm:0 2px 8px rgba(0,0,0,0.04); --shadow-md:0 8px 30px rgba(0,0,0,0.06); --shadow-lg:0 16px 50px rgba(0,0,0,0.08);
+  --radius:16px; --radius-lg:24px;
+  --font-main:'Plus Jakarta Sans',sans-serif; --font-hand:'Caveat',cursive;
+  --nav-h:96px;
+  --win-h:min(50vh,392px);
+}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-main);background:var(--bg);color:var(--text);line-height:1.6;font-size:1.125rem;letter-spacing:.005em;-webkit-font-smoothing:antialiased;}
+.container{max-width:1300px;margin:0 auto;padding:0 24px;}
+
+/* faux fixed nav so the pinned centring matches the real site */
+.faux-nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:100;display:flex;align-items:center;background:rgba(253,246,238,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.faux-nav .logo{font-family:'Recoleta Alt',serif;font-size:1.5rem;color:var(--accent-purple);font-weight:700;}
+
+.spacer{min-height:90vh;display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-family:var(--font-hand);font-size:1.6rem;}
+
+.section-label{display:inline-block;font-family:var(--font-hand);font-size:1.15rem;font-weight:600;color:var(--accent-purple);background:var(--accent-purple-light);padding:2px 14px;border-radius:6px;margin-bottom:10px;}
+.section-title{font-size:clamp(1.7rem,3.2vw,2.4rem);font-weight:800;letter-spacing:-.02em;margin-bottom:12px;line-height:1.15;}
+.section-subtitle{font-size:1rem;color:var(--text-muted);max-width:600px;margin:0 auto;}
+
+/* ── Pin mechanics ── */
+.pin-track{position:relative;height:300vh;}
+.pin{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:var(--nav-h);}
+.pin-head{text-align:center;margin-bottom:30px;}
+.pin-body{display:grid;grid-template-columns:300px 1fr;gap:64px;align-items:stretch;text-align:left;}
+
+/* rail */
+.pin-rail{position:relative;display:flex;flex-direction:column;justify-content:space-between;height:var(--win-h);}
+.pin-rail::before{content:'';position:absolute;left:23px;top:24px;bottom:24px;width:3px;border-radius:3px;background:linear-gradient(180deg,var(--accent-yellow) 0%,var(--accent-green) 50%,var(--accent-purple) 100%);}
+.pin-tab{position:relative;display:flex;gap:18px;align-items:center;text-decoration:none;color:inherit;cursor:pointer;}
+.pin-num{flex-shrink:0;width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.2rem;background:var(--bg-white);border:2px solid var(--border);color:var(--text-muted);transition:all .35s;z-index:1;}
+.pin-ltext{line-height:1.2;}
+.pin-lphase{font-family:var(--font-hand);font-size:1.15rem;color:var(--text-muted);transition:color .35s;}
+.pin-lname{font-weight:800;font-size:1.02rem;color:var(--text-muted);transition:color .35s;display:block;}
+.pin-tab.active .pin-lname{color:var(--text);}
+.pin-tab.active .pin-num{transform:scale(1.1);box-shadow:var(--shadow-md);}
+.pin-tab:nth-child(1).active .pin-num,.pin-tab:nth-child(1).done .pin-num{background:var(--accent-yellow);border-color:var(--accent-yellow);color:var(--text);}
+.pin-tab:nth-child(2).active .pin-num,.pin-tab:nth-child(2).done .pin-num{background:var(--accent-green);border-color:var(--accent-green);color:#fff;}
+.pin-tab:nth-child(3).active .pin-num,.pin-tab:nth-child(3).done .pin-num{background:var(--accent-purple);border-color:var(--accent-purple);color:#fff;}
+.pin-tab:nth-child(1).active .pin-lphase{color:var(--accent-orange);}
+.pin-tab:nth-child(2).active .pin-lphase{color:var(--accent-green);}
+.pin-tab:nth-child(3).active .pin-lphase{color:var(--accent-purple);}
+
+/* card window + sliding column (cards hug their content, with a gap between) */
+.pin-window{height:var(--win-h);overflow:hidden;background:var(--bg);}
+.pin-cards{position:relative;display:flex;flex-direction:column;}
+.pin-card{flex:0 0 auto;margin-bottom:32px;}
+.pin-card:last-child{margin-bottom:0;}
+.pin-inner{background:var(--bg-white);border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:28px 34px;box-shadow:var(--shadow-md);}
+.pin-cardnum{display:none;}
+.pin-eyebrow{font-family:var(--font-hand);font-size:1.4rem;margin-bottom:2px;}
+.pin-card:nth-child(1) .pin-eyebrow{color:var(--accent-orange);}
+.pin-card:nth-child(2) .pin-eyebrow{color:var(--accent-green);}
+.pin-card:nth-child(3) .pin-eyebrow{color:var(--accent-purple);}
+.pin-h{font-size:1.55rem;font-weight:800;margin-bottom:10px;}
+.pin-desc{color:var(--text-muted);font-size:0.96rem;line-height:1.55;margin-bottom:18px;}
+.pin-meta{display:flex;gap:34px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:18px;}
+.pin-meta>div{flex:1;min-width:200px;}
+.pin-mlabel{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:5px;}
+.pin-card:nth-child(1) .pin-mlabel{color:var(--accent-orange);}
+.pin-card:nth-child(2) .pin-mlabel{color:var(--accent-green);}
+.pin-card:nth-child(3) .pin-mlabel{color:var(--accent-purple);}
+.pin-mval{font-size:0.89rem;color:var(--text);line-height:1.5;}
+.pin-support{margin-top:14px;background:var(--accent-green-light);border-radius:12px;padding:11px 14px;font-size:0.83rem;color:var(--text);line-height:1.45;}
+
+.pin-progress{display:flex;gap:8px;justify-content:center;margin-top:22px;}
+.pin-dot{width:8px;height:8px;border-radius:50%;background:var(--border);transition:all .3s;}
+.pin-dot.on{background:var(--accent-purple);transform:scale(1.3);}
+
+.pin-outro{text-align:center;max-width:620px;margin:20px auto 0;font-size:0.98rem;color:var(--text-muted);}
+.pin-outro a{color:var(--text);font-weight:700;text-decoration:underline;text-underline-offset:3px;}
+
+/* ── Fallback: mobile + reduced-motion → no pin, stacked cards ── */
+@media (max-width:900px){
+  .pin-track{height:auto;}
+  .pin{position:static;height:auto;display:block;padding-top:40px;}
+  .pin-head{margin-bottom:28px;}
+  .pin-body{grid-template-columns:1fr;gap:0;}
+  .pin-rail,.pin-progress{display:none;}
+  .pin-window{height:auto;overflow:visible;background:transparent;}
+  .pin-cards{display:block;transform:none!important;}
+  .pin-card{margin-bottom:22px;}
+  .pin-cardnum{display:inline-flex;width:44px;height:44px;border-radius:50%;align-items:center;justify-content:center;font-weight:800;font-size:1.1rem;color:#fff;margin-bottom:14px;}
+  .pin-card:nth-child(1) .pin-cardnum{background:var(--accent-yellow);color:var(--text);}
+  .pin-card:nth-child(2) .pin-cardnum{background:var(--accent-green);}
+  .pin-card:nth-child(3) .pin-cardnum{background:var(--accent-purple);}
+  .pin-outro{margin-top:8px;}
+}
+@media (prefers-reduced-motion: reduce){
+  .pin-track{height:auto;}
+  .pin{position:static;height:auto;display:block;padding-top:40px;}
+  .pin-body{grid-template-columns:1fr;gap:0;}
+  .pin-rail,.pin-progress{display:none;}
+  .pin-window{height:auto;overflow:visible;background:transparent;}
+  .pin-cards{display:block;transform:none!important;}
+  .pin-card{margin-bottom:22px;}
+  .pin-cardnum{display:inline-flex;width:44px;height:44px;border-radius:50%;align-items:center;justify-content:center;font-weight:800;font-size:1.1rem;color:#fff;margin-bottom:14px;}
+  .pin-card:nth-child(1) .pin-cardnum{background:var(--accent-yellow);color:var(--text);}
+  .pin-card:nth-child(2) .pin-cardnum{background:var(--accent-green);}
+  .pin-card:nth-child(3) .pin-cardnum{background:var(--accent-purple);}
+  .pin-outro{margin-top:8px;}
+}
+</style></head><body>
+
+<div class="faux-nav"><div class="container"><span class="logo">Digital Smiles</span></div></div>
+
+<section class="spacer">↓ scroll down to the Process section</section>
+
+<section id="process">
+  <div class="pin-track">
+    <div class="pin">
+      <div class="container">
+        <div class="pin-head">
+          <div class="section-label">Process</div>
+          <h2 class="section-title">How I build your revenue infrastructure</h2>
+          <div class="section-subtitle">Instead of off-the-shelf packages, a three-phase process that solves the right problems at the right depth.</div>
+        </div>
+        <div class="pin-body">
+          <div class="pin-rail">
+            <a class="pin-tab active" href="#stage1"><span class="pin-num">1</span><span class="pin-ltext"><span class="pin-lphase">Where are we leaking?</span><span class="pin-lname">The Systems Diagnostic</span></span></a>
+            <a class="pin-tab" href="#stage2"><span class="pin-num">2</span><span class="pin-ltext"><span class="pin-lphase">Build</span><span class="pin-lname">Systems Implementation Sprint</span></span></a>
+            <a class="pin-tab" href="#stage3"><span class="pin-num">3</span><span class="pin-ltext"><span class="pin-lphase">Scale</span><span class="pin-lname">Revenue Systems Ownership</span></span></a>
+          </div>
+          <div class="pin-window">
+            <div class="pin-cards">
+              <div class="pin-card" id="stage1"><div class="pin-inner">
+                <span class="pin-cardnum">1</span>
+                <div class="pin-eyebrow">The "Where are we leaking?" phase</div>
+                <div class="pin-h">The Systems Diagnostic</div>
+                <p class="pin-desc">Before building, we need a map. This is a 45-minute deep-dive into your current stack — where data breaks, where leads are falling through the cracks, and where manual work is slowing you down.</p>
+                <div class="pin-meta">
+                  <div><div class="pin-mlabel">The Goal</div><div class="pin-mval">Identify whether your infrastructure needs a quick fix or a structural rebuild.</div></div>
+                  <div><div class="pin-mlabel">The Deliverable</div><div class="pin-mval">A written "Revenue Systems Roadmap" summarising 3–5 high-impact fixes, each with a projected ROI.</div></div>
+                </div>
+              </div></div>
+              <div class="pin-card" id="stage2"><div class="pin-inner">
+                <span class="pin-cardnum">2</span>
+                <div class="pin-eyebrow">The "Build" phase</div>
+                <div class="pin-h">Systems Implementation Sprint</div>
+                <p class="pin-desc">You define the bottleneck — "leads aren't reaching the CRM," or "data is missing from reports" — and I engineer the fix. I don't just "turn on" automations; I build, test, and document the whole pipeline so your team can own it.</p>
+                <div class="pin-meta">
+                  <div><div class="pin-mlabel">The Goal</div><div class="pin-mval">A functional, reliable core process that scales, handed over with complete documentation.</div></div>
+                  <div><div class="pin-mlabel">The Deliverable</div><div class="pin-mval">A fully built, documented, and tested process integrated across your stack.</div></div>
+                </div>
+                <div class="pin-support">Every build includes a two-week support period where I monitor the system to make sure data flows, automations fire, and nothing breaks post-launch.</div>
+              </div></div>
+              <div class="pin-card" id="stage3"><div class="pin-inner">
+                <span class="pin-cardnum">3</span>
+                <div class="pin-eyebrow">The "Scale" phase</div>
+                <div class="pin-h">Revenue Systems Ownership</div>
+                <p class="pin-desc">I act as your fractional Systems Engineer, taking ownership of the stack with ongoing monitoring, troubleshooting, and continuous optimisation — a dedicated engineering partner without the full-time headcount cost.</p>
+                <div class="pin-meta">
+                  <div><div class="pin-mlabel">The Goal</div><div class="pin-mval">Keep your engine running at peak performance while you focus on the business.</div></div>
+                  <div><div class="pin-mlabel">The Deliverable</div><div class="pin-mval">Continuous maintenance, priority troubleshooting, and dedicated build hours for future growth.</div></div>
+                </div>
+              </div></div>
+            </div>
+          </div>
+        </div>
+        <div class="pin-progress"><span class="pin-dot on"></span><span class="pin-dot"></span><span class="pin-dot"></span></div>
+        <p class="pin-outro">Not quite the right fit? <a href="#contact">Get in touch</a> and we'll find the right structure for a custom engagement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="spacer">↑ page scrolls normally again after the last card</section>
+
+<script>
+(function(){
+  var track  = document.querySelector('.pin-track');
+  var win    = document.querySelector('.pin-window');
+  var cardsEl= document.querySelector('.pin-cards');
+  var cardEls= [].slice.call(cardsEl ? cardsEl.children : []);
+  var tabs   = [].slice.call(document.querySelectorAll('.pin-tab'));
+  var dots   = [].slice.call(document.querySelectorAll('.pin-dot'));
+  var n = tabs.length;
+  if(!track || !win || !cardsEl || !n) return;
+  var mqMobile = window.matchMedia('(max-width:900px)');
+  var mqReduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  function pinned(){ return !mqMobile.matches && !mqReduce.matches; }
+  var ticking=false, trackTop=0, scrollable=1, offsets=[];
+  function recalc(){
+    trackTop = track.getBoundingClientRect().top + window.scrollY;
+    scrollable = Math.max(1, track.offsetHeight - window.innerHeight);
+    var wc = win.clientHeight/2;
+    offsets = cardEls.map(function(c){ return c.offsetTop + c.offsetHeight/2 - wc; });
+  }
+  function setActive(idx){
+    tabs.forEach(function(t,j){ t.classList.toggle('active', j===idx); t.classList.toggle('done', j<idx); });
+    dots.forEach(function(d,j){ d.classList.toggle('on', j===idx); });
+  }
+  function update(){
+    ticking=false;
+    if(!pinned()){ cardsEl.style.transform=''; setActive(0); return; }
+    var p = (window.scrollY - trackTop) / scrollable;
+    if(p<0) p=0; if(p>1) p=1;
+    var f = p*(n-1), lo = Math.floor(f), hi = Math.min(lo+1, n-1), fr = f-lo;
+    var ty = offsets[lo] + (offsets[hi]-offsets[lo])*fr;
+    cardsEl.style.transform = 'translateY(' + (-ty) + 'px)';
+    setActive(Math.round(f));
+  }
+  function onScroll(){ if(!ticking){ ticking=true; requestAnimationFrame(update); } }
+  function refresh(){ recalc(); update(); }
+  refresh();
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', refresh);
+  window.addEventListener('load', refresh);
+  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(refresh); }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click', function(e){
+      if(!pinned()) return;
+      e.preventDefault();
+      window.scrollTo({ top: trackTop + (i/(n-1))*scrollable, behavior:'smooth' });
+    });
+  });
+})();
+</script>
+</body></html>

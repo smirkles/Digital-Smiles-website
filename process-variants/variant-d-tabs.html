@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Variant D — Tabs</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Recoleta Alt';src:url('../assets/fonts/Recoleta Alt Bold.woff2') format('woff2'),url('../assets/fonts/Recoleta Alt Bold.otf') format('opentype');font-weight:700;font-display:swap;}
+h1,h2,h3{font-family:'Recoleta Alt',serif;font-weight:700;}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#FDF6EE; --bg-white:#FFFFFF; --bg-dark:#1A1A2E; --bg-dark-card:#242440;
+  --text:#1A1A2E; --text-muted:#6B6B80; --text-light:#F0EDE8;
+  --accent-yellow:#FFD23F; --accent-yellow-light:#FFF3CD;
+  --accent-green:#6BCB77; --accent-green-light:#E8F8EA;
+  --accent-purple:#9B8FE8; --accent-purple-light:#EEEAFF;
+  --accent-orange:#FF8C42; --accent-orange-light:#FFF0E5;
+  --accent-pink:#FF6B8A; --accent-pink-light:#FFE3EA;
+  --border:rgba(0,0,0,0.06); --border-light:rgba(255,255,255,0.1);
+  --shadow-sm:0 2px 8px rgba(0,0,0,0.04); --shadow-md:0 8px 30px rgba(0,0,0,0.06); --shadow-lg:0 16px 50px rgba(0,0,0,0.08);
+  --radius:16px; --radius-lg:24px;
+  --font-main:'Plus Jakarta Sans',sans-serif; --font-hand:'Caveat',cursive;
+}
+body{font-family:var(--font-main);background:var(--bg);color:var(--text);line-height:1.6;font-size:1.125rem;letter-spacing:.005em;-webkit-font-smoothing:antialiased;}
+.container{max-width:1300px;margin:0 auto;padding:0 24px;}
+section{padding:72px 0;}
+.section-label{display:inline-block;font-family:var(--font-hand);font-size:1.15rem;font-weight:600;color:var(--accent-purple);background:var(--accent-purple-light);padding:2px 14px;border-radius:6px;margin-bottom:10px;}
+.section-title{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;letter-spacing:-.02em;margin-bottom:14px;line-height:1.15;}
+.section-subtitle{font-size:1rem;color:var(--text-muted);max-width:580px;margin-bottom:48px;}
+.section-center{text-align:center;}
+.section-center .section-subtitle{margin-left:auto;margin-right:auto;}
+
+
+.tabs{max-width:940px;margin:8px auto 0;}
+.tabs input{position:absolute;opacity:0;width:0;height:0;pointer-events:none;}
+.tab-strip{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:30px;}
+.tab-label{display:flex;align-items:center;gap:10px;padding:12px 22px;border-radius:100px;border:1.5px solid var(--border);background:var(--bg-white);cursor:pointer;font-weight:600;font-size:.92rem;transition:all .25s;}
+.tab-num{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:800;background:var(--bg);color:var(--text-muted);transition:all .25s;}
+.tab-panel{display:none;text-align:left;background:var(--bg-white);border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:44px 46px;box-shadow:var(--shadow-md);}
+.tp-phase{font-family:var(--font-hand);font-size:1.4rem;color:var(--accent-purple);margin-bottom:4px;}
+.tp-name{font-size:1.7rem;font-weight:800;margin-bottom:14px;}
+.tp-desc{color:var(--text-muted);font-size:1rem;line-height:1.65;margin-bottom:26px;max-width:620px;}
+.tp-meta{display:flex;gap:36px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:24px;}
+.tp-meta>div{flex:1;min-width:220px;}
+.tp-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--accent-purple);margin-bottom:6px;}
+.tp-val{font-size:.94rem;color:var(--text);line-height:1.55;}
+#tab1:checked~.tab-strip label[for=tab1],#tab2:checked~.tab-strip label[for=tab2],#tab3:checked~.tab-strip label[for=tab3]{background:var(--bg-dark);color:#fff;border-color:var(--bg-dark);}
+#tab1:checked~.tab-strip label[for=tab1] .tab-num,#tab2:checked~.tab-strip label[for=tab2] .tab-num,#tab3:checked~.tab-strip label[for=tab3] .tab-num{background:var(--accent-yellow);color:var(--text);}
+#tab1:checked~.tab-panels #panel1,#tab2:checked~.tab-panels #panel2,#tab3:checked~.tab-panels #panel3{display:block;}
+
+</style></head><body>
+<section><div class="container section-center">
+
+    <div class="section-label">Process</div>
+    <h2 class="section-title">How I build your revenue infrastructure</h2>
+    <div class="section-subtitle">Instead of off-the-shelf packages, a three-phase process that solves the right problems at the right depth.</div>
+
+
+    <div class="tabs">
+      <input type="radio" name="ph" id="tab1" checked><input type="radio" name="ph" id="tab2"><input type="radio" name="ph" id="tab3">
+      <div class="tab-strip">
+        <label class="tab-label" for="tab1"><span class="tab-num">1</span>The Systems Diagnostic</label>
+        <label class="tab-label" for="tab2"><span class="tab-num">2</span>Implementation Sprint</label>
+        <label class="tab-label" for="tab3"><span class="tab-num">3</span>Systems Ownership</label>
+      </div>
+      <div class="tab-panels">
+        <div class="tab-panel" id="panel1"><div class="tp-phase">The &ldquo;Where are we leaking?&rdquo; phase</div><div class="tp-name">The Systems Diagnostic</div><p class="tp-desc">A 45-minute deep-dive that maps your current stack — where data breaks, where leads fall through the cracks, and where manual work is slowing you down. Before building, we need a map.</p><div class="tp-meta"><div><div class="tp-label">The Deliverable</div><div class="tp-val">A written Revenue Systems Roadmap: 3–5 high-impact fixes, each with a projected ROI estimate.</div></div><div><div class="tp-label">The Goal</div><div class="tp-val">Identify whether your infrastructure needs a quick fix or a structural rebuild.</div></div></div></div>
+        <div class="tab-panel" id="panel2"><div class="tp-phase">The &ldquo;Build&rdquo; phase</div><div class="tp-name">Systems Implementation Sprint</div><p class="tp-desc">You name the bottleneck; I engineer the fix — building, testing, and documenting the entire pipeline so your team can own it. I don&rsquo;t just &ldquo;turn on&rdquo; automations.</p><div class="tp-meta"><div><div class="tp-label">The Deliverable</div><div class="tp-val">A fully built, tested, and documented process integrated across your stack.</div></div><div><div class="tp-label">The Goal</div><div class="tp-val">A reliable core process that scales — handed over with complete docs and 2 weeks of support.</div></div></div></div>
+        <div class="tab-panel" id="panel3"><div class="tp-phase">The &ldquo;Scale&rdquo; phase</div><div class="tp-name">Revenue Systems Ownership</div><p class="tp-desc">I act as your fractional Systems Engineer — ongoing monitoring, troubleshooting, and continuous optimisation. A dedicated engineering partner without the full-time headcount cost.</p><div class="tp-meta"><div><div class="tp-label">The Deliverable</div><div class="tp-val">Continuous maintenance, priority troubleshooting, and dedicated build hours.</div></div><div><div class="tp-label">The Goal</div><div class="tp-val">Keep your engine at peak performance while you focus on the business.</div></div></div></div>
+      </div>
+    </div>
+
+</div></section>
+</body></html>

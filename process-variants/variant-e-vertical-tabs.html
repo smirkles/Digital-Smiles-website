@@ -1,0 +1,125 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Variant E — Vertical scroll tabs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Recoleta Alt';src:url('../assets/fonts/Recoleta Alt Bold.woff2') format('woff2'),url('../assets/fonts/Recoleta Alt Bold.otf') format('opentype');font-weight:700;font-display:swap;}
+h1,h2,h3{font-family:'Recoleta Alt',serif;font-weight:700;}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#FDF6EE; --bg-white:#FFFFFF; --bg-dark:#1A1A2E; --bg-dark-card:#242440;
+  --text:#1A1A2E; --text-muted:#6B6B80; --text-light:#F0EDE8;
+  --accent-yellow:#FFD23F; --accent-yellow-light:#FFF3CD;
+  --accent-green:#6BCB77; --accent-green-light:#E8F8EA;
+  --accent-purple:#9B8FE8; --accent-purple-light:#EEEAFF;
+  --accent-orange:#FF8C42; --accent-orange-light:#FFF0E5;
+  --accent-pink:#FF6B8A; --accent-pink-light:#FFE3EA;
+  --border:rgba(0,0,0,0.06); --border-light:rgba(255,255,255,0.1);
+  --shadow-sm:0 2px 8px rgba(0,0,0,0.04); --shadow-md:0 8px 30px rgba(0,0,0,0.06); --shadow-lg:0 16px 50px rgba(0,0,0,0.08);
+  --radius:16px; --radius-lg:24px;
+  --font-main:'Plus Jakarta Sans',sans-serif; --font-hand:'Caveat',cursive;
+}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-main);background:var(--bg);color:var(--text);line-height:1.6;font-size:1.125rem;letter-spacing:.005em;-webkit-font-smoothing:antialiased;}
+.container{max-width:1300px;margin:0 auto;padding:0 24px;}
+section{padding:72px 0;}
+.section-label{display:inline-block;font-family:var(--font-hand);font-size:1.15rem;font-weight:600;color:var(--accent-purple);background:var(--accent-purple-light);padding:2px 14px;border-radius:6px;margin-bottom:10px;}
+.section-title{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;letter-spacing:-.02em;margin-bottom:14px;line-height:1.15;}
+.section-subtitle{font-size:1rem;color:var(--text-muted);max-width:600px;margin-bottom:24px;}
+.section-center{text-align:center;}
+.section-center .section-subtitle{margin-left:auto;margin-right:auto;}
+.vt-wrap{display:grid;grid-template-columns:300px 1fr;gap:72px;text-align:left;margin-top:32px;align-items:start;}
+.vt-rail{position:sticky;top:150px;display:flex;flex-direction:column;}
+.vt-rail::before{content:'';position:absolute;left:23px;top:24px;bottom:40px;width:3px;border-radius:3px;background:linear-gradient(180deg,var(--accent-yellow) 0%,var(--accent-green) 50%,var(--accent-purple) 100%);}
+.vt-tab{position:relative;display:flex;gap:18px;align-items:flex-start;padding-bottom:128px;text-decoration:none;color:inherit;cursor:pointer;}
+.vt-tab:last-child{padding-bottom:0;}
+.vt-num{flex-shrink:0;width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.2rem;background:var(--bg-white);border:2px solid var(--border);color:var(--text-muted);transition:all .35s;z-index:1;}
+.vt-ltext{padding-top:6px;}
+.vt-lphase{font-family:var(--font-hand);font-size:1.15rem;color:var(--text-muted);transition:color .35s;line-height:1;}
+.vt-lname{font-weight:800;font-size:1.02rem;color:var(--text-muted);transition:color .35s;line-height:1.25;margin-top:2px;display:block;}
+.vt-tab.active .vt-lname{color:var(--text);}
+.vt-tab.active .vt-num{transform:scale(1.1);box-shadow:var(--shadow-md);}
+.vt-tab:nth-child(1).active .vt-num,.vt-tab:nth-child(1).done .vt-num{background:var(--accent-yellow);border-color:var(--accent-yellow);color:var(--text);}
+.vt-tab:nth-child(2).active .vt-num,.vt-tab:nth-child(2).done .vt-num{background:var(--accent-green);border-color:var(--accent-green);color:#fff;}
+.vt-tab:nth-child(3).active .vt-num,.vt-tab:nth-child(3).done .vt-num{background:var(--accent-purple);border-color:var(--accent-purple);color:#fff;}
+.vt-tab:nth-child(1).active .vt-lphase{color:var(--accent-orange);}
+.vt-tab:nth-child(2).active .vt-lphase{color:var(--accent-green);}
+.vt-tab:nth-child(3).active .vt-lphase{color:var(--accent-purple);}
+.vt-content{display:flex;flex-direction:column;}
+.vt-stage{min-height:88vh;display:flex;flex-direction:column;justify-content:center;}
+.vt-stage:first-child{min-height:68vh;justify-content:flex-start;}
+.vt-stage:last-child{min-height:80vh;justify-content:flex-end;}
+.vt-inner{background:var(--bg-white);border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:42px 44px;box-shadow:var(--shadow-md);}
+.vt-eyebrow{font-family:var(--font-hand);font-size:1.45rem;margin-bottom:2px;}
+.vt-stage:nth-child(1) .vt-eyebrow{color:var(--accent-orange);}
+.vt-stage:nth-child(2) .vt-eyebrow{color:var(--accent-green);}
+.vt-stage:nth-child(3) .vt-eyebrow{color:var(--accent-purple);}
+.vt-h{font-size:1.7rem;font-weight:800;margin-bottom:16px;}
+.vt-desc{color:var(--text-muted);font-size:1rem;line-height:1.7;margin-bottom:26px;}
+.vt-meta{display:flex;gap:36px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:24px;}
+.vt-meta>div{flex:1;min-width:200px;}
+.vt-mlabel{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px;}
+.vt-stage:nth-child(1) .vt-mlabel{color:var(--accent-orange);}
+.vt-stage:nth-child(2) .vt-mlabel{color:var(--accent-green);}
+.vt-stage:nth-child(3) .vt-mlabel{color:var(--accent-purple);}
+.vt-mval{font-size:.92rem;color:var(--text);line-height:1.55;}
+.vt-support{margin-top:20px;background:var(--accent-green-light);border-radius:12px;padding:14px 16px;font-size:.86rem;color:var(--text);line-height:1.5;}
+.vt-outro{text-align:center;max-width:620px;margin:30px auto 0;font-size:1rem;color:var(--text-muted);}
+.vt-outro a{color:var(--text);font-weight:700;text-decoration:underline;text-underline-offset:3px;}
+</style></head><body>
+<section><div class="container">
+  <div class="section-center">
+    <div class="section-label">Process</div>
+    <h2 class="section-title">How I build your revenue infrastructure</h2>
+    <div class="section-subtitle">Instead of off-the-shelf packages, a three-phase process. Scroll through each stage — the timeline on the left tracks where you are.</div>
+  </div>
+  <div class="vt-wrap">
+    <nav class="vt-rail">
+      <a class="vt-tab active" href="#stage1"><span class="vt-num">1</span><span class="vt-ltext"><span class="vt-lphase">Where are we leaking?</span><span class="vt-lname">The Systems Diagnostic</span></span></a>
+      <a class="vt-tab" href="#stage2"><span class="vt-num">2</span><span class="vt-ltext"><span class="vt-lphase">Build</span><span class="vt-lname">Systems Implementation Sprint</span></span></a>
+      <a class="vt-tab" href="#stage3"><span class="vt-num">3</span><span class="vt-ltext"><span class="vt-lphase">Scale</span><span class="vt-lname">Revenue Systems Ownership</span></span></a>
+    </nav>
+    <div class="vt-content">
+      <div class="vt-stage" id="stage1"><div class="vt-inner">
+        <div class="vt-eyebrow">The &ldquo;Where are we leaking?&rdquo; phase</div>
+        <div class="vt-h">The Systems Diagnostic</div>
+        <p class="vt-desc">Before building, we need a map. This is a 45-minute deep-dive into your current stack — where data breaks, where leads are falling through the cracks, and where manual work is slowing you down.</p>
+        <div class="vt-meta"><div><div class="vt-mlabel">The Goal</div><div class="vt-mval">Identify whether your infrastructure needs a quick fix or a structural rebuild.</div></div><div><div class="vt-mlabel">The Deliverable</div><div class="vt-mval">A written &ldquo;Revenue Systems Roadmap&rdquo; that clearly summarises 3–5 high-impact fixes, each with a projected ROI estimate.</div></div></div>
+        
+      </div></div>
+      <div class="vt-stage" id="stage2"><div class="vt-inner">
+        <div class="vt-eyebrow">The &ldquo;Build&rdquo; phase</div>
+        <div class="vt-h">Systems Implementation Sprint</div>
+        <p class="vt-desc">You define the bottleneck — &ldquo;leads aren&rsquo;t reaching the CRM,&rdquo; or &ldquo;data is missing from our reports&rdquo; — and I engineer the fix. I don&rsquo;t just &ldquo;turn on&rdquo; automations; I build, test, and document the entire pipeline so your team can own it.</p>
+        <div class="vt-meta"><div><div class="vt-mlabel">The Goal</div><div class="vt-mval">Deliver a functional, reliable core process that scales, handed over with complete documentation.</div></div><div><div class="vt-mlabel">The Deliverable</div><div class="vt-mval">A fully built, documented, and tested process integrated across your stack.</div></div></div>
+        <div class="vt-support">Every build includes a two-week support period where I monitor the system to make sure data flows, automations fire, and nothing breaks post-launch.</div>
+      </div></div>
+      <div class="vt-stage" id="stage3"><div class="vt-inner">
+        <div class="vt-eyebrow">The &ldquo;Scale&rdquo; phase</div>
+        <div class="vt-h">Revenue Systems Ownership</div>
+        <p class="vt-desc">I act as your fractional Systems Engineer, taking ownership of the stack with ongoing monitoring, troubleshooting, and continuous optimisation — a dedicated engineering partner without the full-time headcount cost.</p>
+        <div class="vt-meta"><div><div class="vt-mlabel">The Goal</div><div class="vt-mval">Keep your engine running at peak performance while you focus on the creative and managerial side of the business.</div></div><div><div class="vt-mlabel">The Deliverable</div><div class="vt-mval">Continuous maintenance, priority troubleshooting, and dedicated build hours for your future growth plans.</div></div></div>
+        
+      </div></div>
+    </div>
+  </div>
+  <p class="vt-outro">Not quite the right fit? <a href="#contact">Get in touch</a> and we&rsquo;ll find the right structure for a custom engagement.</p>
+</div></section>
+
+<script>
+(function(){
+  var tabs=[].slice.call(document.querySelectorAll('.vt-tab'));
+  var stages=[].slice.call(document.querySelectorAll('.vt-stage'));
+  function setActive(i){tabs.forEach(function(t,j){t.classList.toggle('active',j===i);t.classList.toggle('done',j<i);});}
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ setActive(stages.indexOf(e.target)); } });
+    },{rootMargin:'-45% 0px -45% 0px',threshold:0});
+    stages.forEach(function(s){io.observe(s);});
+  }
+  tabs.forEach(function(t,i){t.addEventListener('click',function(ev){ev.preventDefault();stages[i].scrollIntoView({behavior:'smooth',block:'center'});});});
+})();
+</script>
+
+</body></html>
